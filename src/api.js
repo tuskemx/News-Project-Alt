@@ -11,3 +11,13 @@ export const getTopics = () => {
     })
 
 }
+
+export const getArticles = (input) => {
+    
+    return request.get(`/articles`, { params: { topic: input } }).then((res) => {
+        let { articles } = res.data;
+        console.log(articles, 'API');
+        console.log('input')
+        return articles;
+    });
+}
