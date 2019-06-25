@@ -8,15 +8,16 @@ class SingleArticle extends Component {
     render() {
         const { singleArticle } = this.state;
         console.log(singleArticle.article)
+        console.log(this.props);
         return (
             <div>
-                {singleArticle.article &&
+                {singleArticle.title &&
                     <div>
-                        <h1>{singleArticle.article.title}</h1>
+                        <h1>{singleArticle.title}</h1>
                         <br></br>
-                        <h2>{singleArticle.article.topic}</h2>
+                        <h2>{singleArticle.topic}</h2>
                         <br></br>
-                        <h3>{singleArticle.article.body}</h3>
+                        <h3>{singleArticle.body}</h3>
                         <br></br>
 
                     </div>
@@ -41,9 +42,9 @@ class SingleArticle extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.id !== prevProps.id) {
-            API.getArticles(undefined, undefined, this.props.id).then((res) => {
-                console.log(res);
-                this.setState({ singleArticle: res.data.article })
+            API.getArticles(undefined, undefined, this.props.id).then((article) => {
+                console.log(article, "singlearticle")
+                this.setState({ singleArticle: article })
             })
         }
     }

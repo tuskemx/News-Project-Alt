@@ -8,7 +8,7 @@ const ArticlesListCard = (props) => {
             {props.articles.length > 0 &&
                 props.articles.map(article => (
                     <ul key={uuidv1()}>
-                        <Link to={`/ ${article.article_id}`}>
+                        <Link to={`/articles/${article.article_id}`}>
                             <li>{article.title}</li></Link>
                         <br></br>
                         <li>{article.votes} Votes</li>

@@ -20,12 +20,12 @@ export const getArticles = (topic, sortby, id) => {
     console.log(sortby, 'sortby api');
     return request.get(`/articles${theid}`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
         if (res.data.articles) {
-            var { articles } = res.data;
+            const { articles } = res.data;
+            return articles
         }
-        if (res.data.article) {
-            articles = res.data
-        }
-        return articles;
+        const { article } = res.data
+        return article;
+
     });
 }
 
