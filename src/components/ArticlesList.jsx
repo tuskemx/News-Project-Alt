@@ -13,10 +13,14 @@ class ArticlesList extends Component {
     }
     render() {
         let { articles } = this.state
+        console.log(this.props);
+        console.log(this.props.topics, "jsxxx")
+    
+     
         return (
             <div>
                 <h1>articles</h1>
-                <SortComponent/>
+                <SortComponent SortedArticles={this.SortedArticles} propsTopic={this.props.topics} />
                 <Router>
                     <SingleArticle path='/:id' />
                 </Router>
@@ -29,10 +33,7 @@ class ArticlesList extends Component {
         );
     }
     componentDidMount() {
-        var param = this.props._id;
-        if (this.props.topics) {
-            param = this.props.topics
-        }
+        var param = this.props._id ? this.props._id : this.props.topics;
         API.getArticles(param).then((res) => {
             console.log(res);
             this.setState({ articles: res })
@@ -42,10 +43,8 @@ class ArticlesList extends Component {
 
     }
     componentDidUpdate(prevProps, prevState) {
-        var param = this.props._id;
-        if (this.props.topics) {
-            param = this.props.topics;
-        }
+        var param = this.props._id ? this.props._id : this.props.topics;
+
         if (param === this.props._id && param !== prevProps._id) {
             API.getArticles(param).then((res) => {
 
@@ -61,6 +60,13 @@ class ArticlesList extends Component {
 
             })
         }
+    }
+    SortedArticles = (topic, sortby) => {
+        API.getArticles(topic, sortby).then((articles) => {
+            console.log(articles);
+            this.setState({ articles: articles })
+            console.log(articles);
+        })
     }
 }
 export default ArticlesList;

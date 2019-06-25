@@ -8,14 +8,14 @@ const ArticlesListCard = (props) => {
             {props.articles.length > 0 &&
                 props.articles.map(article => (
                     <ul key={uuidv1()}>
-                                    <Link to={`/ ${article.article_id}`}>
-                                        <li>{article.title}</li></Link>
-                                    <br></br>
-                                    <li>{article.votes} Votes</li>
-                                    <li>{article.author}</li>
-                                    <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
+                        <Link to={`/ ${article.article_id}`}>
+                            <li>{article.title}</li></Link>
+                        <br></br>
+                        <li>{article.votes} Votes</li>
+                        <li>{article.author}</li>
+                        <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
                     </ul>
-        
+
                 ))}
         </div>
     );

@@ -14,6 +14,10 @@ export const getTopics = () => {
 
 export const getArticles = (topic, sortby, id) => {
     const theid = id ? `/${id}` : ''
+
+    console.log(theid, 'apiid');
+    console.log(topic, 'topicapi');
+    console.log(sortby, 'sortby api');
     return request.get(`/articles${theid}`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
         if (res.data.articles) {
             var { articles } = res.data;
