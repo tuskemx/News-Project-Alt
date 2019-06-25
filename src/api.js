@@ -12,12 +12,16 @@ export const getTopics = () => {
 
 }
 
-export const getArticles = (input) => {
-    
-    return request.get(`/articles`, { params: { topic: input } }).then((res) => {
-        let { articles } = res.data;
-        console.log(articles, 'API');
-        console.log('input')
+export const getArticles = (topic, sortby, id) => {
+    const theid = id ? `/${id}` : ''
+    return request.get(`/articles${theid}`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
+        if (res.data.articles) {
+            var { articles } = res.data;
+        }
+        if (res.data.article) {
+            articles = res.data
+        }
         return articles;
     });
 }
+

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Router } from '@reach/router';
-import TopicsComponent from './TopicsComponent';
 import * as API from '../api';
 import TopicsCard from './TopicsCard';
+import ArticleList from './ArticlesList'
+import { Router } from '@reach/router';
 
 class Header extends Component {
 
@@ -17,7 +17,7 @@ class Header extends Component {
                 <h1>Header</h1>
                 <TopicsCard topics={topics} />
                 <Router>
-                    <TopicsComponent topics={topics} path='/:topics' />
+                    <ArticleList path='/topics/:topics' />
                 </Router>
             </div>
         );

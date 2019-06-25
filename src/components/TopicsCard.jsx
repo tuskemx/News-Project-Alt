@@ -8,8 +8,7 @@ const TopicsCard = (props) => {
     return (
         <ul>
             {props.topics.map((topic) => {
-                console.log(topic);
-                return <Link key={uuidv1()} to={`/${topic.slug}`}>
+                return <Link key={uuidv1()} to={`/topics/${topic.slug}`}>
                     <li key={uuidv1()}>
                         {topic.slug}
                     </li>
