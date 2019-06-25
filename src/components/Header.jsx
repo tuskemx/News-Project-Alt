@@ -8,11 +8,12 @@ import PostArticle from './popupboxPostArticle'
 class Header extends Component {
 
     state = {
-        topics: []
+        topics: [],
+        renderPostArticle: false
     }
 
     render() {
-        let { topics } = this.state
+        let { topics, renderPostArticle } = this.state
         return (
             <div>
                 <h1>Header</h1>
@@ -21,8 +22,8 @@ class Header extends Component {
                 <TopicsCard topics={topics} />
                 <Router>
                     <ArticleList path='/topics/:topics' />
-                    {topics[1] &&
-                        <PostArticle topics={topics} path='/postarticle' />
+                    {renderPostArticle &&
+                        <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
                     }
                 </Router>
                 <Link to="/postarticle"><b id="bold-title">Post Article</b></Link>
@@ -34,7 +35,7 @@ class Header extends Component {
         API.getTopics().then((res) => {
             console.log('%c TOPICS! ', 'background: #222; color: #bada55');
             console.log(res);
-            this.setState({ topics: res })
+            this.setState({ topics: res, renderPostArticle: true })
         })
     }
     handleSubmit = postState => {
@@ -45,6 +46,8 @@ class Header extends Component {
             topic: topicInput,
             author: 'Ghostanon'
         };
+        console.log(newArticle);
+        console.log(topicInput);
         API.postArticle(newArticle)
             .then((article) => {
                 console.log(article);

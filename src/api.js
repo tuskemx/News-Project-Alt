@@ -26,9 +26,11 @@ export const getArticles = (topic, sortby, id) => {
 }
 
 export const postArticle = newArticle => {
+    console.log(newArticle);
     return request
         .post(`/articles`, newArticle)
         .then((article) => {
+            console.log(article);
             return article;
         });
 };
