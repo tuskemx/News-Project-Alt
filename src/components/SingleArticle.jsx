@@ -24,7 +24,7 @@ class SingleArticle extends Component {
                         <br></br>
                         <h4>{singleArticle.votes}</h4>
                         <div>
-                            <Voter votes={votes} HandleVote={this.HandleVote} articleVotes={singleArticle.votes} />
+                            <Voter votes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
 
                         </div>
 
@@ -56,7 +56,7 @@ class SingleArticle extends Component {
             })
         }
     }
-    HandleVote = (direction) => {
+    HandleArticleVote = (direction) => {
         const { votes, singleArticle } = this.state
         const limiter = votes + direction;
         const newArticleVotes = singleArticle.votes + direction;

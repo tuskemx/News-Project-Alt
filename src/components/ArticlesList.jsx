@@ -9,7 +9,7 @@ import SortComponent from './SortComponent';
 
 class ArticlesList extends Component {
     state = {
-        articles: []
+        articles: [],
     }
     render() {
         let { articles } = this.state
