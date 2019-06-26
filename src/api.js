@@ -36,17 +36,7 @@ export const postArticle = newArticle => {
 };
 
 export const patchVotes = (direction, id, changeURL) => {
-    var newURL;
-    if (changeURL === 'comments') {
-        newURL = 'comments'
-    }
-    else {
-        newURL = 'articles'
-    }
-
-    console.log(newURL + id)
-
-    return request.patch(`${newURL}/${id}`, ({ inc_votes: direction })).then((res) => {
+    return request.patch(`${changeURL}/${id}`, ({ inc_votes: direction })).then((res) => {
         return res
     })
 }
