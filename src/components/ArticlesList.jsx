@@ -10,9 +10,10 @@ import SortComponent from './SortComponent';
 class ArticlesList extends Component {
     state = {
         articles: [],
+        err: null,
     }
     render() {
-        let { articles } = this.state
+        const { articles } = this.state
         console.log(this.props);
         return (
             <div>

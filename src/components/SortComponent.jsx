@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class SortComponent extends Component {
     state = {
-        sort_by: ''
+        sort_by: '',
+        err: null
     }
 
 

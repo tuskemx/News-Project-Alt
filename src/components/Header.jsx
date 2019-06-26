@@ -9,7 +9,8 @@ import PostArticle from './PostArticle';
 class Header extends Component {
 
     state = {
-        topics: []
+        topics: [],
+        err: null,
     }
 
     render() {

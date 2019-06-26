@@ -35,18 +35,22 @@ export const postArticle = newArticle => {
         });
 };
 
-export const patchVotes = (direction, id) => {
+export const patchVotes = (direction, id, changeURL) => {
+    var newURL;
+    if (changeURL === 'comments') {
+        newURL = 'comments'
+    }
+    else {
+        newURL = 'articles'
+    }
 
-    return request.patch(`/articles/${id}`, ({ inc_votes: direction })).then((res) => {
+    console.log(newURL + id)
+
+    return request.patch(`${newURL}/${id}`, ({ inc_votes: direction })).then((res) => {
         return res
     })
 }
-export const patchCommentVotes = (direction, id) => {
-    return request.patch(`/comments/${id}`, ({ inc_votes: direction })).then((res) => {
 
-        return res
-    })
-}
 
 export const getComments = (id) => {
     console.log(id);

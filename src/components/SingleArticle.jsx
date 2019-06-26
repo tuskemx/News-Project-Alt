@@ -6,7 +6,8 @@ import Comments from './Comments';
 class SingleArticle extends Component {
     state = {
         singleArticle: [],
-        votes: 0
+        votes: 0,
+        err: null
     }
     render() {
         const { singleArticle, votes } = this.state;
@@ -65,7 +66,7 @@ class SingleArticle extends Component {
 
         this.setState({ votes: limiter, singleArticle: articleCopy })
 
-        API.patchVotes(direction, this.props.id).catch((err) => {
+        API.patchVotes(direction, this.props.id, "comments").catch((err) => {
             console.log(err);
             articleCopy.votes = newArticleVotes - direction;
             this.setState({ votes: votes - direction, singleArticle: articleCopy })

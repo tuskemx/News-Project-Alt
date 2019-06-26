@@ -5,6 +5,7 @@ import Voter from './Voter';
 class Comments extends Component {
     state = {
         comments: [],
+        err: null,
     }
     render() {
         console.log(this.props);
