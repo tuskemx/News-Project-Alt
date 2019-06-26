@@ -51,3 +51,10 @@ export const getComments = (id) => {
     });
 }
 
+export const getUser = (specificUser) => {
+    return request.get(`users/${specificUser}`).then(({ data: { user } }) => {
+
+        return user
+    })
+
+}

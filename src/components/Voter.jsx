@@ -37,7 +37,7 @@ class Voter extends Component {
         this.setState(prevState => {
             return { votes: direction + prevState.votes, voteChange: limiter }
         });
-        API.patchCommentVotes(direction, id, "comments").then((res) => {
+        API.patchVotes(direction, id, "comments").then((res) => {
             const { votes } = res.data.comment
             this.setState(prevState => {
                 return { votes: votes, voteChange: prevState.voteChange }

@@ -4,6 +4,7 @@ import TopicsCard from './TopicsCard';
 import ArticleList from './ArticlesList'
 import { Router, navigate, Link } from '@reach/router';
 import PostArticle from './PostArticle';
+import User from './User';
 
 
 class Header extends Component {
@@ -18,10 +19,13 @@ class Header extends Component {
         return (
             <div>
                 <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
+                <br></br>
+                <Link to="/user"><b>User Page </b></Link>
                 <TopicsCard topics={topics} />
                 <Link to="/postarticle"><b id="bold-title">post article</b></Link>
 
                 <Router>
+                    <User path='/user' user={this.props.user} />
                     <ArticleList path='/topics/:topics' />
                     <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
 
