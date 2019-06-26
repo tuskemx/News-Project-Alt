@@ -13,14 +13,15 @@ class App extends Component {
         <Header />
         <br></br>
         <Router>
-
           <ArticlesList path='/articles/*' />
           <ArticlesList path='/' />
+
         </Router>
 
       </div>
     );
   }
+
 }
 
 export default App;

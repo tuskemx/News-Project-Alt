@@ -29,9 +29,21 @@ export const postArticle = newArticle => {
     console.log(newArticle);
     return request
         .post(`/articles`, newArticle)
-        .then((article) => {
-            console.log(article);
+        .then((res) => {
+
+
+
+
+
+
+            const { article } = res.data
+
+            console.log(article)
+
             return article;
+
+
+
         });
 };
 

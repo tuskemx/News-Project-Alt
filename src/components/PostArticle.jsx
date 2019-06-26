@@ -10,12 +10,11 @@ class PostArticle extends Component {
     state = {
         titleInput: null,
         bodyInput: null,
-        topicInput: null,
+        topicInput: 'coding',
         err: null
     }
     render() {
-        console.log(this.props);
-        console.log(this.props.topics, "tes");
+
         return (
 
 
@@ -69,6 +68,7 @@ class PostArticle extends Component {
                     <br />
                     <button>Post Article</button>
                 </form>
+
             </div>
         )
 

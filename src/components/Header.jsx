@@ -3,28 +3,29 @@ import * as API from '../api';
 import TopicsCard from './TopicsCard';
 import ArticleList from './ArticlesList'
 import { Router, navigate, Link } from '@reach/router';
-import PostArticle from './popupboxPostArticle'
+import PostArticle from './PostArticle';
+
 
 class Header extends Component {
 
     state = {
-        topics: [],
-        renderPostArticle: false
+        topics: []
     }
 
     render() {
-        let { topics, renderPostArticle } = this.state
+        let { topics } = this.state
         return (
             <div>
                 <h1>Header</h1>
 
                 <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
                 <TopicsCard topics={topics} />
+                <Link to="/postarticle"><b id="bold-title">post article</b></Link>
+
                 <Router>
                     <ArticleList path='/topics/:topics' />
-                    {renderPostArticle &&
-                        <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
-                    }
+                    <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
+
                 </Router>
                 <Link to="/postarticle"><b id="bold-title">Post Article</b></Link>
 
@@ -44,16 +45,21 @@ class Header extends Component {
             title: titleInput,
             body: bodyInput,
             topic: topicInput,
-            author: 'Ghostanon'
+            author: 'jessjelly'
         };
         console.log(newArticle);
         console.log(topicInput);
         API.postArticle(newArticle)
             .then((article) => {
-                console.log(article);
                 navigate(`/articles/${article.article_id}`)
+
+
+
+            }).catch((err) => {
+                console.dir(err);
             })
     }
 }
+
 
 export default Header;
