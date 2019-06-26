@@ -4,10 +4,10 @@ import * as API from '../api';
 class Voter extends Component {
     state = {
         votes: 0,
-        voteChange: 0
+        voteChange: 0,
     }
     render() {
-        const { articleVotes, commentID, commentVotes, HandleArticleVote } = this.props
+        const { articleVotes, commentID, commentVotes, HandleArticleVote, articleLimiterVotes } = this.props
         const { votes, voteChange } = this.state;
         const voteArticleComment = commentVotes ? votes : articleVotes;
         const Handle = commentVotes ? this.HandleVote : HandleArticleVote;
@@ -17,14 +17,17 @@ class Voter extends Component {
         return (
 
             <div>
-                <button disabled={voteChange === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment + 1}</b></button>
+                <button disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment + 1}</b></button>
                 <p>{votes}</p>
-                <button disabled={voteChange === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment - 1}</b></button>
+                <button disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment - 1}</b></button>
             </div>
         );
     }
     componentDidMount() {
-        this.setState({ votes: this.props.commentVotes })
+        this.setState({
+            votes: this.props.commentVotes,
+            voteChangeArticle: this.props.articleLimiterVotes
+        })
 
     }
 

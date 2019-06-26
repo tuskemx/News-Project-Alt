@@ -24,7 +24,7 @@ class SingleArticle extends Component {
                         <br></br>
                         <h4>{singleArticle.votes}</h4>
                         <div>
-                            <Voter votes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
+                            <Voter articleLimiterVotes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
 
                         </div>
 
