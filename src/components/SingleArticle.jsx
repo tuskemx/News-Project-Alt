@@ -68,7 +68,8 @@ class SingleArticle extends Component {
 
         API.patchVotes(direction, this.props.id).catch((err) => {
             console.log(err);
-            API.patchVotes(-direction, this.props.id);
+            articleCopy.votes = newArticleVotes - direction;
+            this.setState({ votes: votes - direction, singleArticle: articleCopy })
         })
     }
 }
