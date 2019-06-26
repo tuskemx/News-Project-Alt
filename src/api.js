@@ -30,27 +30,13 @@ export const postArticle = newArticle => {
     return request
         .post(`/articles`, newArticle)
         .then((res) => {
-
-
-
-
-
-
             const { article } = res.data
-
-            console.log(article)
-
             return article;
-
-
-
         });
 };
 
 export const patchVotes = (direction, id) => {
     return request.patch(`/articles/${id}`, ({ inc_votes: direction })).then((res) => {
-
-
         return res
     })
 }

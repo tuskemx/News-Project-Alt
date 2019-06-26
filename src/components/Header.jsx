@@ -16,8 +16,6 @@ class Header extends Component {
         let { topics } = this.state
         return (
             <div>
-                <h1>Header</h1>
-
                 <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
                 <TopicsCard topics={topics} />
                 <Link to="/postarticle"><b id="bold-title">post article</b></Link>
@@ -27,7 +25,7 @@ class Header extends Component {
                     <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
 
                 </Router>
-                <Link to="/postarticle"><b id="bold-title">Post Article</b></Link>
+
 
             </div>
         );
@@ -52,9 +50,6 @@ class Header extends Component {
         API.postArticle(newArticle)
             .then((article) => {
                 navigate(`/articles/${article.article_id}`)
-
-
-
             }).catch((err) => {
                 console.dir(err);
             })

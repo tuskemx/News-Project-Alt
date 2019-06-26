@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as API from '../api';
+import Voter from './Voter';
 
 class SingleArticle extends Component {
     state = {
@@ -13,7 +14,7 @@ class SingleArticle extends Component {
         return (
             <div>
                 {singleArticle.title &&
-                    <div>
+                    <div id="single-article-box">
                         <h1>{singleArticle.title}</h1>
                         <br></br>
                         <h2>{singleArticle.topic}</h2>
@@ -22,8 +23,8 @@ class SingleArticle extends Component {
                         <br></br>
                         <h4>{singleArticle.votes}</h4>
                         <div>
-                            <button disabled={votes === 1} onClick={() => { this.HandleVote(1) }}>UP<br></br><b>{singleArticle.votes + 1}</b></button>
-                            <button disabled={votes === -1} onClick={() => { this.HandleVote(-1) }}>DOWN<br></br><b>{singleArticle.votes - 1}</b></button>
+                            <Voter votes={votes} HandleVote={this.HandleVote} articleVotes={singleArticle.votes} />
+
                         </div>
 
                         <br></br>

@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>NC News</h1>
         <Header />
         <br></br>
         <Router>
