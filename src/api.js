@@ -36,10 +36,17 @@ export const postArticle = newArticle => {
 };
 
 export const patchVotes = (direction, id) => {
-    return request.patch(`/articles/${id}x`, ({ inc_votes: direction })).then((res) => {
+    return request.patch(`/articles/${id}`, ({ inc_votes: direction })).then((res) => {
         return res
     })
 }
 
+export const getComments = (id) => {
+    console.log(id);
 
+    return request.get(`/articles/${id}/comments`).then((res) => {
+        const { comments } = res.data;
+        return comments;
+    });
+}
 

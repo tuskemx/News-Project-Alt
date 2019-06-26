@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as API from '../api';
 import Voter from './Voter';
+import Comments from './Comments';
 
 class SingleArticle extends Component {
     state = {
@@ -9,9 +10,9 @@ class SingleArticle extends Component {
     }
     render() {
         const { singleArticle, votes } = this.state;
-        console.log(singleArticle.article)
-        console.log(this.props);
+        console.log(singleArticle)
         return (
+
             <div>
                 {singleArticle.title &&
                     <div id="single-article-box">
@@ -28,6 +29,7 @@ class SingleArticle extends Component {
                         </div>
 
                         <br></br>
+                        <Comments article={singleArticle} />
 
                     </div>
 
@@ -40,9 +42,7 @@ class SingleArticle extends Component {
     componentDidMount() {
         console.log(this.props);
         API.getArticles(undefined, undefined, this.props.id).then((article) => {
-            console.log(article, "singleArticle");
             this.setState({ singleArticle: article }, () => {
-                console.log(article, "singlearticle state")
             })
         }).catch((err) => {
             console.log(err);
@@ -52,7 +52,6 @@ class SingleArticle extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.id !== prevProps.id) {
             API.getArticles(undefined, undefined, this.props.id).then((article) => {
-                console.log(article, "singlearticle")
                 this.setState({ singleArticle: article })
             })
         }
