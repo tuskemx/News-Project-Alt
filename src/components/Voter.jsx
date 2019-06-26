@@ -31,15 +31,12 @@ class Voter extends Component {
     HandleVote = (direction, id) => {
         const limiter = direction + this.state.voteChange;
         this.setState(prevState => {
-            return { votes: direction + this.state.votes, voteChange: limiter }
+            return { votes: direction + prevState.votes, voteChange: limiter }
         });
-        console.log(limiter, "limiter");
-        console.log(direction);
-        console.log(this.state.Change);
         API.patchCommentVotes(direction, id).then((res) => {
             const { votes } = res.data.comment
             this.setState(prevState => {
-                return { votes: votes, voteChange: limiter }
+                return { votes: votes, voteChange: prevState.voteChange }
             })
         }).catch((err) => {
             this.setState({ votes: this.state.votes - limiter, voteChange: limiter })
