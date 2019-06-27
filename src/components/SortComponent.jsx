@@ -31,8 +31,6 @@ class SortComponent extends Component {
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.sort_by !== prevState.sort_by) {
-            console.log(this.props.propsTopic, "sort");
-            console.log(this.state.sort_by, "sort")
             this.props.SortedArticles(this.props.propsTopic, this.state.sort_by)
         }
     }

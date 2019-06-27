@@ -47,7 +47,7 @@ class Header extends Component {
             this.setState({ topics: res, renderPostArticle: true })
         }).catch(({ res }) => {
             const errorstatus = res.status;
-            const errormessage = res.data.msg;
+            const errormessage = res.message;
             const err = { errorstatus, errormessage };
             this.setState({ err: err });
 
@@ -69,7 +69,7 @@ class Header extends Component {
                 navigate(`/articles/${article.article_id}`)
             }).catch(({ res }) => {
                 const errorstatus = res.status;
-                const errormessage = res.data.msg;
+                const errormessage = res.message;
                 const err = { errorstatus, errormessage };
                 this.setState({ err: err, article: '' });
 

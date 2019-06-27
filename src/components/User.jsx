@@ -66,8 +66,9 @@ class User extends Component {
                 name: name
             })
         }).catch(({ res }) => {
+            console.log(res);
             const errorstatus = res.status;
-            const errormessage = res.data.msg;
+            const errormessage = res.data.message;
             const err = { errorstatus, errormessage };
             this.setState({ err: err });
 

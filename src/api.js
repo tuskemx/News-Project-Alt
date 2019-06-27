@@ -15,18 +15,23 @@ export const getTopics = () => {
 export const getArticles = (topic, sortby) => {
 
     return request.get(`/articles`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
+       
         if (res.data.articles) {
             const { articles } = res.data;
+
             return articles
         }
-        const { article } = res.data
-        return article;
+        if (res.data.article){
 
-    });
+         const { article } = res.data
+
+        return article;
+        }
+        return res;
+    })
 }
 
 export const postArticle = newArticle => {
-    console.log(newArticle);
     return request
         .post(`/articles`, newArticle)
         .then((res) => {
@@ -83,6 +88,7 @@ export const getArticle = (id) => {
 
     return request.get(`/articles/${id}`).then((res) => {
         const { article } = res.data;
+        console.log(res);
         return article;
     });
 }

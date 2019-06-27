@@ -37,30 +37,7 @@ class Comments extends Component {
             this.setState({ comments: comments })
         })
     }
-    // HandleVote = (direction, id) => {
-    //     const { votes, comments } = this.state
-    //     const limiter = votes + direction;
-    //     const newCommentVotes = comments.votes + direction;
-    //     const commentsCopy = comments;
-    //     var indexOfCommentinArray;
-    //     commentsCopy.forEach((comment, i) => {
-    //         if (comment.comment_id === id) {
-    //             indexOfCommentinArray = i;
 
-    //         }
-    //     })
-    //     commentsCopy[indexOfCommentinArray].votes = newCommentVotes;
-    //     console.log(commentsCopy);
-    //     console.log(indexOfCommentinArray, "indexofcomment")
-
-    //     this.setState({ votes: limiter, comments: commentsCopy })
-
-    //     API.patchCommentVotes(direction, id).catch((err) => {
-    //         console.log(err);
-    //         commentsCopy[indexOfCommentinArray].votes = newCommentVotes - direction;
-    //         this.setState({ votes: votes - direction, comments: commentsCopy })
-    //     })
-    // }
 }
 
 export default Comments;

@@ -67,11 +67,15 @@ class PostTopic extends Component {
                 navigate(`/topics/${slug}`)
 
 
-            }).catch((err) => {
-                console.log(err)
+            }).catch(({ res }) => {
+                console.log(res);
+                const errorstatus = res.status;
+                const errormessage = res.data.message;
+                const err = { errorstatus, errormessage };
+                this.setState({ err: err, singleArticle: [] });
             })
-
+        }
     };
-}
+
 
 export default PostTopic;

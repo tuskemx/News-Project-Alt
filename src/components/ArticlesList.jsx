@@ -24,7 +24,7 @@ class ArticlesList extends Component {
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
                 <ArticlesListCard articles={articles} topic={topics} />
 
-                }
+
 
             </div>
         );
@@ -33,11 +33,11 @@ class ArticlesList extends Component {
 
         API.getArticles(this.props.topics).then((res) => {
             console.log(res);
-            this.setState({ articles: res })
+            this.setState({ articles: res, err: null })
         }).catch((res) => {
-            console.log(res, "mount err")
-            const errorstatus = res.status;
-            const errormessage = res.data.msg;
+            console.dir(res, "mount err")
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
             const err = { errorstatus, errormessage };
             this.setState({ err });
 
@@ -50,16 +50,14 @@ class ArticlesList extends Component {
         if (this.props.topics !== prevProps.topics) {
             API.getArticles(this.props.topics).then((res) => {
 
-                this.setState({ articles: res })
+                this.setState({ articles: res, err: null })
 
             }).catch((res) => {
-                console.log(res, "update err");
-                const errorstatus = res.status;
-                console.log(errorstatus);
-                const errormessage = res.data;
-                console.log(errormessage, "status");
+                console.dir(res);
+                const errorstatus = res.response.data.status;
+                const errormessage = res.message;
                 const err = { errorstatus, errormessage };
-                this.setState({ err: err, articles: [] });
+                this.setState({ err: err});
 
             })
         }
@@ -68,13 +66,9 @@ class ArticlesList extends Component {
 
     SortedArticles = (topic, sortby) => {
         API.getArticles(topic, sortby).then((articles) => {
-            console.log(articles);
             this.setState({ articles: articles })
-            console.log(articles);
         }).catch((err) => {
-            if (err) {
-                this.setState({ err: err, articles: [] })
-            }
+            this.setState({ err: err })
         })
     }
 }
