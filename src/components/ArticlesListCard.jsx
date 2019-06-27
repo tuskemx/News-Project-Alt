@@ -1,20 +1,17 @@
-import React from 'react';
+
 import { Link } from '@reach/router';
 import { Error } from './Error'
 import navigatePostArticle from './functions/navigatePostArticle'
 import * as API from '../api';
-
+ import React, { Component } from 'react';
  
-
-const ArticlesListCard = (props) => {
-     
-    
-    
+ class ArticlesListCard extends Component {
+      render() {
     return (
         <div>
-            <p>{props.topic}</p>
-           {props.articles.length > 0 &&
-            props.articles.map(article => (
+            <p>{this.props.topic}</p>
+           {this.props.articles.length > 0 &&
+           this.props.articles.map(article => (
                 <ul key={article.article_id}>
                     <Link to={`/articles/${article.article_id}`}>
                         <li>{article.title}</li></Link>
@@ -22,25 +19,21 @@ const ArticlesListCard = (props) => {
                     <li>{article.votes} Votes</li>
                     <li>{article.author}</li>
                     <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
-                     <button onClick={() => {props.deleteArticle(article.article_id)}}>BUTTON DELETE TEST</button>
-                </ul>
-            
-                  
-            
+                     <button onClick={() => {this.deleteArticle(article.article_id)}}>DELETE ARTICLE</button>
+                </ul>     
             ))}
-            
-
-
-            {props.articles.length === 0 &&
+            {this.props.articles.length === 0 &&
                 <div>
                     <p>NO ARTICLES FOUND MAYBE POST ONE</p>
                     <button onClick={navigatePostArticle}>POST AN ARTICLE</button>
                 </div>
             }
         </div >
+
     );
+            }
   deleteArticle = (articleID) => {
-      API.deleteArticle(articleID).then((res) => {
+      API.deleteItem(articleID, '/articles/').then((res) => {
         console.log(res);
       })
     }

@@ -52,7 +52,7 @@ class Comments extends Component {
         })
     }
         deleteClicked = (commentid) => {
-        API.deleteComment(commentid).then((res) => {
+        API.deleteItem(commentid, '/comments/').then((res) => {
            console.log(res);
            this.setState({ button: true, err: null})
         }).catch((res) => {

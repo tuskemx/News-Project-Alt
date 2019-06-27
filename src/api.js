@@ -81,17 +81,13 @@ export const getArticle = (id) => {
     });
 }
 
-export const deleteComment = (commentid) => {
-    return request.delete(`/comments/${commentid}`).then((res) => {
+export const deleteItem = (id, identifier) => {
+ //   /comments/
+    return request.delete(`${identifier}${id}`).then((res) => {
 
         return res
     })
 }
-export const deleteArticle = (articleID) => {
-    return request.delete(`/articles/${articleID}`).then((res) => {
-      console.log(res);
-        return res
-    })
-}
+
 
 
