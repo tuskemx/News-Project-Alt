@@ -31,10 +31,13 @@ class App extends Component {
       console.log(res);
       console.log(res.status);
       if (res.username === 'jessjelly') {
-        this.setState({ user: res.username }, () => {
+        const userData = [res.username, res.avatar_url, res.name]
+        this.setState({ user: [userData] }, () => {
           console.log(this.state.user)
         })
       }
+    }).catch((err) => {
+      console.log(err);
     })
   }
 

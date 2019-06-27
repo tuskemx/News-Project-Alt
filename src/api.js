@@ -58,3 +58,23 @@ export const getUser = (specificUser) => {
     })
 
 }
+
+export const postNewTopic = newTopic => {
+    console.log(newTopic);
+    return request
+        .post(`/topics`, newTopic)
+
+        .then((newTopic) => {
+            return newTopic;
+        });
+};
+
+export const getArticlesByUser = username => {
+    //maybe merge with getarticles
+    return request
+        .get(`/articles?author=${username}`)
+        .then((data) => {
+            console.log(data);
+            return data;
+        });
+};

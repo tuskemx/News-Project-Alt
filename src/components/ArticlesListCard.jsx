@@ -1,11 +1,15 @@
 import React from 'react';
 const uuidv1 = require('uuid/v1');
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
+import navigatePostArticle from './functions/navigatePostArticle'
+
 
 const ArticlesListCard = (props) => {
+
     return (
         <div>
-            {props.articles.length > 0 &&
+            <p>{props.topic}</p>
+            {props.articles.length > 0 && props.articles[0].topic === props.topic &&
                 props.articles.map(article => (
                     <ul key={uuidv1()}>
                         <Link to={`/articles/${article.article_id}`}>
@@ -17,8 +21,13 @@ const ArticlesListCard = (props) => {
                     </ul>
 
                 ))}
-        </div>
+            {props.articles.length === 0 &&
+                <p>NO ARTICLES FOUND MAYBE POST ONE</p>}
+            <button onClick={navigatePostArticle}>POST AN ARTICLE</button>
+        </div >
     );
+
+
 };
 
 export default ArticlesListCard;

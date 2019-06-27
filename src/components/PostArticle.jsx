@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const uuidv1 = require('uuid/v1');
 // import {
 //     PopupboxManager,
 //     PopupboxContainer
@@ -59,7 +60,7 @@ class PostArticle extends Component {
                             onChange={this.updateInputs}>
 
                             {this.props.topics.map((topic, i) => {
-                                return <option>{topic.slug}</option>
+                                return <option key={uuidv1()}>{topic.slug}</option>
                             })}
 
 

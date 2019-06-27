@@ -14,7 +14,6 @@ class ArticlesList extends Component {
     }
     render() {
         const { articles } = this.state
-        console.log(this.props);
         return (
             <div>
                 <h1>articles</h1>
@@ -23,7 +22,7 @@ class ArticlesList extends Component {
                     <SingleArticle path=':id' />
                 </Router>
                 {this.props.topics ?
-                    <ArticlesListCard articles={articles} />
+                    <ArticlesListCard articles={articles} topic={this.props.topics} />
                     :
                     <ArticlesListCard articles={articles} />
                 }

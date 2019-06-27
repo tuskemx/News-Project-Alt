@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import * as API from '../api';
 import TopicsCard from './TopicsCard';
 import ArticleList from './ArticlesList'
 import { Router, navigate, Link } from '@reach/router';
 import PostArticle from './PostArticle';
 import User from './User';
-
+import PostTopic from './PostTopic';
+import * as API from '../api';
 
 class Header extends Component {
 
@@ -26,9 +26,9 @@ class Header extends Component {
 
                 <Router>
                     <User path='/user' user={this.props.user} />
+                    <PostTopic path='posttopic' />
                     <ArticleList path='/topics/:topics' />
                     <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
-
                 </Router>
 
 
