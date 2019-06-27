@@ -52,23 +52,17 @@ class User extends Component {
     }
     componentDidMount() {
         const { user } = this.props;
-        Promise.all([API.getArticlesByUser(user), API.getUser(user)]).then((res) => {
-            console.log(res);
-
-
-            const { articles } = res[0].data;
-            const { avatar_url, username, name } = res[1];
-
+        Promise.all([API.getArticles(undefined, undefined,undefined,user), API.getUser(user)]).then((res) => {
             this.setState({
-                articlesByUser: articles,
-                avatar_url: avatar_url,
-                username: username,
-                name: name
+                articlesByUser: res[0].articles,
+                avatar_url: res[1].avatar_url,
+                username: res[1].username,
+                name: res[1].name
             })
-        }).catch(({ res }) => {
-            console.log(res);
-            const errorstatus = res.status;
-            const errormessage = res.data.message;
+        }).catch(([res]) => {
+            console.dir(res);
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
             const err = { errorstatus, errormessage };
             this.setState({ err: err });
 

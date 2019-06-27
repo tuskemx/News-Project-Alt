@@ -12,10 +12,10 @@ export const getTopics = () => {
 
 }
 
-export const getArticles = (topic, sortby, p) => {
-
-    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby, p: p } }).then((res) => {
-       
+export const getArticles = (topic, sortby, p, username) => {
+console.log(username);
+    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby, p: p, author: username  } }).then((res) => {
+       console.dir(res);
         if (res.data.articles) {
             const { articles, totalcount } = res.data;
             
@@ -59,14 +59,13 @@ export const getComments = (id) => {
 
 export const getUser = (specificUser) => {
     return request.get(`users/${specificUser}`).then(({ data: { user } }) => {
-
+     console.log(user);
         return user
     })
 
 }
 
 export const postNewTopic = newTopic => {
-    console.log(newTopic);
     return request
         .post(`/topics`, newTopic)
 
@@ -75,15 +74,7 @@ export const postNewTopic = newTopic => {
         });
 };
 
-export const getArticlesByUser = username => {
-    //maybe merge with getarticles
-    return request
-        .get(`/articles?author=${username}`)
-        .then((data) => {
-            console.log(data);
-            return data;
-        });
-};
+
 
 export const getArticle = (id) => {
 
