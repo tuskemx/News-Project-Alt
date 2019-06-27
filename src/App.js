@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
 import Header from './components/Header';
 import ArticlesList from './components/ArticlesList';
-import { Router } from '@reach/router';
+import { Router, navigate } from '@reach/router';
 import * as API from './api';
 import SingleArticle from './components/SingleArticle'
 import { Error } from './components/Error';
+import SignupComponent from "./components/SignupComponent";
+import './App.css'
 
 
 class App extends Component {
@@ -26,14 +27,20 @@ class App extends Component {
           <Error default />
           <ArticlesList path='/articles' />
           <ArticlesList path='/' />
+          <SignupComponent updateAppUser={this.updateAppUser} path="/sign-up" />
           <SingleArticle path='/articles/:id' />
         </Router>
 
       </div>
     );
   }
-
-
+  updateAppUser = (user) => {  // { user }
+  this.setState({
+    user: user.username
+  });
+  localStorage.setItem('user', JSON.stringify(user));
+  navigate(`/`);
+  }
 }
 
 export default App;

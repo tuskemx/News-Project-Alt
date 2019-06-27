@@ -89,5 +89,14 @@ export const deleteItem = (id, identifier) => {
     })
 }
 
+export const postUser = newUser => {
+    console.log(newUser);
+    return request.post(`/users`, newUser).then((user) => {
+        console.log(user);
+      return user;
+    })
+  };
+
+
 
 

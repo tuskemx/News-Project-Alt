@@ -26,6 +26,8 @@ class Header extends Component {
                 <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
                 <br></br>
                 <Link to="/user"><b>User Page </b></Link>
+                <br></br>
+                 <Link to="sign-up"><b id="bold-title">sign up</b></Link>
                 <TopicsCard topics={topics} />
                 <Link to="/postarticle"><b id="bold-title">post article</b></Link>
 
@@ -45,11 +47,12 @@ class Header extends Component {
             console.log('%c TOPICS! ', 'background: #222; color: #bada55');
             console.log(res);
             this.setState({ topics: res, renderPostArticle: true })
-        }).catch(({ res }) => {
-            const errorstatus = res.status;
+        }).catch((res) => {
+            console.dir(res, "mount err")
+            const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
-            this.setState({ err: err });
+            this.setState({ err });
 
         })
 
@@ -60,20 +63,21 @@ class Header extends Component {
             title: titleInput,
             body: bodyInput,
             topic: topicInput,
-            author: 'jessjelly'
+            author: this.props.user
         };
         console.log(newArticle);
         console.log(topicInput);
         API.postArticle(newArticle)
             .then((article) => {
                 navigate(`/articles/${article.article_id}`)
-            }).catch(({ res }) => {
-                const errorstatus = res.status;
-                const errormessage = res.message;
-                const err = { errorstatus, errormessage };
-                this.setState({ err: err, article: '' });
+            }).catch((res) => {
+            console.dir(res, "mount err")
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
+            const err = { errorstatus, errormessage };
+            this.setState({ err });
 
-            })
+        })
 
     }
 }

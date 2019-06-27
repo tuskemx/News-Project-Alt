@@ -53,13 +53,14 @@ class User extends Component {
     componentDidMount() {
         const { user } = this.props;
         Promise.all([API.getArticles(undefined, undefined,undefined,user), API.getUser(user)]).then((res) => {
+            const articles = res[0].articles ?  res[0].articles : ''
             this.setState({
-                articlesByUser: res[0].articles,
+                articlesByUser: articles,
                 avatar_url: res[1].avatar_url,
                 username: res[1].username,
                 name: res[1].name
             })
-        }).catch(([res]) => {
+        }).catch((res) => {
             console.dir(res);
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
