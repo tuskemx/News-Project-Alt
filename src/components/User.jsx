@@ -6,25 +6,26 @@ const uuidv1 = require('uuid/v1');
 
 class User extends Component {
     state = {
-        user: this.props.user,
         articlesByUser: [],
+        avatar_url: '',
+        name: '',
+        username: ''
     }
     render() {
         const { user } = this.props;
-        const { articlesByUser } = this.state;
-        const arrUser = user[0]
-        console.log(arrUser);
+        const { articlesByUser, avatar_url, name, username } = this.state;
+        console.log(user);
+
 
 
         return (
             <div>
 
-                <b>{arrUser}</b>
-                <b>{arrUser}</b>
+                <b>{name}</b>
                 <br></br>
+                <b>{username}</b>
                 <br></br>
-                <img src={arrUser} width="50" height="50" alt="avatar"></img>
-                <br></br>
+                <img src={{ avatar_url }} width="50" height="50" alt="avatar"></img>
                 <b>Articles By user:</b>
 
                 <div>
@@ -33,6 +34,7 @@ class User extends Component {
                             <b>{article.title}</b>
                             <br></br>
                         </Link>
+
                     )
 
                     )}
@@ -43,24 +45,23 @@ class User extends Component {
         );
     }
     componentDidMount() {
-        const { user } = this.state;
-        API.getArticlesByUser(user).then((res) => {
-            const { articles } = res.data;
+        const { user } = this.props;
+        Promise.all([API.getArticlesByUser(user), API.getUser(user)]).then((res) => {
+            console.log(res);
+
+
+            const { articles } = res[0].data;
+            const { avatar_url, username, name } = res[1];
+
             this.setState({
                 articlesByUser: articles,
+                avatar_url: avatar_url,
+                username: username,
+                name: name
             })
-
         })
-    }
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.state.articlesByUser[0].length !== prevState.articlesUser[0].length) {
-    //         API.getArticlesByUser(this.state.user).then((res) => {
-    //             this.setState({
-    //                 articlesByUser: res.data.articles,
-    //             })
 
-    //         })
-    //     }
+    }
 }
 
 

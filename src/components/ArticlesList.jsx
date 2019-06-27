@@ -14,25 +14,21 @@ class ArticlesList extends Component {
     }
     render() {
         const { articles } = this.state
+        const { topics } = this.props;
         return (
             <div>
                 <h1>articles</h1>
-                <SortComponent SortedArticles={this.SortedArticles} propsTopic={this.props.topics} />
-                <Router>
-                    <SingleArticle path=':id' />
-                </Router>
-                {this.props.topics ?
-                    <ArticlesListCard articles={articles} topic={this.props.topics} />
-                    :
-                    <ArticlesListCard articles={articles} />
+                <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
+                <ArticlesListCard articles={articles} topic={topics} />
+
                 }
 
             </div>
         );
     }
     componentDidMount() {
-        const param = this.props._id ? this.props._id : this.props.topics;
-        API.getArticles(param).then((res) => {
+
+        API.getArticles(this.props.topics).then((res) => {
             console.log(res);
             this.setState({ articles: res })
         }).catch((err) => {
@@ -41,18 +37,10 @@ class ArticlesList extends Component {
 
     }
     componentDidUpdate(prevProps, prevState) {
-        const param = this.props._id ? this.props._id : this.props.topics;
 
-        if (param === this.props._id && param !== prevProps._id) {
-            API.getArticles(param).then((res) => {
 
-                this.setState({ articles: res })
-
-            })
-
-        }
-        if (param === this.props.topics && param !== prevProps.topics) {
-            API.getArticles(param).then((res) => {
+        if (this.props.topics !== prevProps.topics) {
+            API.getArticles(this.props.topics).then((res) => {
 
                 this.setState({ articles: res })
 
@@ -64,6 +52,10 @@ class ArticlesList extends Component {
             console.log(articles);
             this.setState({ articles: articles })
             console.log(articles);
+        }).catch((err) => {
+            if (err) {
+                this.setState({ err: true })
+            }
         })
     }
 }

@@ -4,11 +4,12 @@ import Header from './components/Header';
 import ArticlesList from './components/ArticlesList';
 import { Router } from '@reach/router';
 import * as API from './api';
+import SingleArticle from './components/SingleArticle'
 
 
 class App extends Component {
   state = {
-    user: '',
+    user: 'jessjelly',
     err: null,
   }
   render() {
@@ -17,29 +18,15 @@ class App extends Component {
         <Header user={this.state.user} />
         <br></br>
         <Router>
-          <ArticlesList path='/articles/*' />
+          <ArticlesList path='/articles' />
           <ArticlesList path='/' />
-
+          <SingleArticle path='/articles/:id' />
         </Router>
 
       </div>
     );
   }
-  componentDidMount() {
-    const user = 'jessjelly';
-    API.getUser(user).then((res) => {
-      console.log(res);
-      console.log(res.status);
-      if (res.username === 'jessjelly') {
-        const userData = [res.username, res.avatar_url, res.name]
-        this.setState({ user: [userData] }, () => {
-          console.log(this.state.user)
-        })
-      }
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
+  
 
 }
 

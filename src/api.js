@@ -12,9 +12,9 @@ export const getTopics = () => {
 
 }
 
-export const getArticles = (topic, sortby, id) => {
-    const theid = id ? `/${id}` : ''
-    return request.get(`/articles${theid}`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
+export const getArticles = (topic, sortby) => {
+
+    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
         if (res.data.articles) {
             const { articles } = res.data;
             return articles
@@ -78,3 +78,11 @@ export const getArticlesByUser = username => {
             return data;
         });
 };
+
+export const getArticle = (id) => {
+
+    return request.get(`/articles/${id}`).then((res) => {
+        const { article } = res.data;
+        return article;
+    });
+}

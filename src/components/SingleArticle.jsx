@@ -11,7 +11,6 @@ class SingleArticle extends Component {
     }
     render() {
         const { singleArticle, votes } = this.state;
-        console.log(singleArticle)
         return (
 
             <div>
@@ -26,24 +25,20 @@ class SingleArticle extends Component {
                         <h4>{singleArticle.votes}</h4>
                         <div>
                             <Voter articleLimiterVotes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
-
                         </div>
-
                         <br></br>
                         <Comments article={singleArticle} />
-
                     </div>
-
                 }
-
-
             </div>
         );
     }
     componentDidMount() {
-        console.log(this.props);
-        API.getArticles(undefined, undefined, this.props.id).then((article) => {
+        console.log(this.props.id);
+        API.getArticle(this.props.id).then((article) => {
+            console.log(article);
             this.setState({ singleArticle: article }, () => {
+                console.log(this.state.singleArticle)
             })
         }).catch((err) => {
             console.log(err);
@@ -51,9 +46,11 @@ class SingleArticle extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.id !== prevProps.id) {
-            API.getArticles(undefined, undefined, this.props.id).then((article) => {
-                this.setState({ singleArticle: article })
+        if (this.state.singleArticle.article_id !== prevState.singleArticle.article_id) {
+            API.getArticle(this.props.id).then((article) => {
+                this.setState({ singleArticle: article }, () => {
+                    console.log(this.state.singleArticle);
+                })
             })
         }
     }
