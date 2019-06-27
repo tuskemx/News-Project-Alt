@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as API from '../api';
 import { navigate } from '@reach/router';
+import { Error } from './Error'
 
 
 class PostTopic extends Component {
@@ -11,6 +12,10 @@ class PostTopic extends Component {
         button: false
     }
     render() {
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         return (
             <div>
                 <form className="form-body" onSubmit={this.handleSubmit}>

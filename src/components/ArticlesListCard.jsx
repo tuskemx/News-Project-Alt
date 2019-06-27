@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, navigate } from '@reach/router';
+import { Link } from '@reach/router';
+import { Error } from './Error'
 import navigatePostArticle from './functions/navigatePostArticle'
 
 
@@ -9,7 +10,7 @@ const ArticlesListCard = (props) => {
     return (
         <div>
             <p>{props.topic}</p>
-            
+
             {props.articles.map(article => (
                 <ul key={article.article_id}>
                     <Link to={`/articles/${article.article_id}`}>

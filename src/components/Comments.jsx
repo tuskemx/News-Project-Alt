@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from '../api';
 const uuidv1 = require('uuid/v1');
 import Voter from './Voter';
+import { Error } from './Error'
 class Comments extends Component {
     state = {
         comments: [],
@@ -10,7 +11,10 @@ class Comments extends Component {
     render() {
         console.log(this.props);
         const { comments } = this.state
-
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         console.log(comments);
         return (
             <div>

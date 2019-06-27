@@ -6,6 +6,7 @@ import PostArticle from './PostArticle';
 import User from './User';
 import PostTopic from './PostTopic';
 import * as API from '../api';
+import { Error } from './Error'
 
 class Header extends Component {
 
@@ -16,6 +17,10 @@ class Header extends Component {
 
     render() {
         let { topics } = this.state
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         return (
             <div>
                 <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
@@ -40,7 +45,14 @@ class Header extends Component {
             console.log('%c TOPICS! ', 'background: #222; color: #bada55');
             console.log(res);
             this.setState({ topics: res, renderPostArticle: true })
+        }).catch(({ res }) => {
+            const errorstatus = res.status;
+            const errormessage = res.data.msg;
+            const err = { errorstatus, errormessage };
+            this.setState({ err: err });
+
         })
+
     }
     handleSubmit = postState => {
         const { titleInput, bodyInput, topicInput } = postState;
@@ -55,9 +67,14 @@ class Header extends Component {
         API.postArticle(newArticle)
             .then((article) => {
                 navigate(`/articles/${article.article_id}`)
-            }).catch((err) => {
-                console.dir(err);
+            }).catch(({ res }) => {
+                const errorstatus = res.status;
+                const errormessage = res.data.msg;
+                const err = { errorstatus, errormessage };
+                this.setState({ err: err, article: '' });
+
             })
+
     }
 }
 

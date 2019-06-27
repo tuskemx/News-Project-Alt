@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 const uuidv1 = require('uuid/v1');
+import { Error } from './Error'
 // import {
 //     PopupboxManager,
 //     PopupboxContainer
@@ -15,7 +16,10 @@ class PostArticle extends Component {
         err: null
     }
     render() {
-
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         return (
 
 

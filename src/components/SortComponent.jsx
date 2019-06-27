@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Error } from './Error'
 
 class SortComponent extends Component {
     state = {
@@ -8,6 +9,10 @@ class SortComponent extends Component {
 
 
     render() {
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         return (
             <div>
                 <select id="select-sort" onChange={this.updateSortState}>
@@ -26,8 +31,8 @@ class SortComponent extends Component {
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.sort_by !== prevState.sort_by) {
-           console.log(this.props.propsTopic, "sort");
-           console.log(this.state.sort_by, "sort")
+            console.log(this.props.propsTopic, "sort");
+            console.log(this.state.sort_by, "sort")
             this.props.SortedArticles(this.props.propsTopic, this.state.sort_by)
         }
     }

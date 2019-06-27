@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router'
 const uuidv1 = require('uuid/v1');
+import { Error } from './Error'
 
 
 const TopicsCard = (props) => {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import * as API from '../api';
 import ArticlesListCard from './ArticlesListCard';
-import { Router } from '@reach/router';
-import SingleArticle from './SingleArticle';
 import SortComponent from './SortComponent';
+import { Error } from './Error'
 
 
 
@@ -13,6 +12,10 @@ class ArticlesList extends Component {
         err: null,
     }
     render() {
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         const { articles } = this.state
         const { topics } = this.props;
         return (
@@ -31,11 +34,16 @@ class ArticlesList extends Component {
         API.getArticles(this.props.topics).then((res) => {
             console.log(res);
             this.setState({ articles: res })
-        }).catch((err) => {
-            console.log(err);
-        })
+        }).catch((res) => {
+            console.log(res, "mount err")
+            const errorstatus = res.status;
+            const errormessage = res.data.msg;
+            const err = { errorstatus, errormessage };
+            this.setState({ err });
 
+        })
     }
+
     componentDidUpdate(prevProps, prevState) {
 
 
@@ -44,9 +52,20 @@ class ArticlesList extends Component {
 
                 this.setState({ articles: res })
 
+            }).catch((res) => {
+                console.log(res, "update err");
+                const errorstatus = res.status;
+                console.log(errorstatus);
+                const errormessage = res.data;
+                console.log(errormessage, "status");
+                const err = { errorstatus, errormessage };
+                this.setState({ err: err, articles: [] });
+
             })
         }
+
     }
+
     SortedArticles = (topic, sortby) => {
         API.getArticles(topic, sortby).then((articles) => {
             console.log(articles);
@@ -54,7 +73,7 @@ class ArticlesList extends Component {
             console.log(articles);
         }).catch((err) => {
             if (err) {
-                this.setState({ err: true })
+                this.setState({ err: err, articles: [] })
             }
         })
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as API from '../api';
+import { Error } from './Error'
 
 class Voter extends Component {
     state = {
@@ -12,6 +13,11 @@ class Voter extends Component {
         const { votes, voteChange } = this.state;
         const voteArticleComment = commentVotes ? votes : articleVotes;
         const Handle = commentVotes ? this.HandleVote : HandleArticleVote;
+
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
 
 
         // const whichURL = commentVotes ? "comments" : "articles";

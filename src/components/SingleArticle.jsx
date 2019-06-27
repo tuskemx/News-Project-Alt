@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from '../api';
 import Voter from './Voter';
 import Comments from './Comments';
+import { Error } from './Error'
 
 class SingleArticle extends Component {
     state = {
@@ -11,6 +12,10 @@ class SingleArticle extends Component {
     }
     render() {
         const { singleArticle, votes } = this.state;
+        const { err } = this.state;
+        if (err !== null) {
+            return <Error err={err} />
+        }
         return (
 
             <div>
@@ -36,12 +41,14 @@ class SingleArticle extends Component {
     componentDidMount() {
         console.log(this.props.id);
         API.getArticle(this.props.id).then((article) => {
-            console.log(article);
             this.setState({ singleArticle: article }, () => {
                 console.log(this.state.singleArticle)
             })
-        }).catch((err) => {
-            console.log(err);
+        }).catch(({ res }) => {
+            const errorstatus = res.status;
+            const errormessage = res.data.msg;
+            const err = { errorstatus, errormessage };
+            this.setState({ err });
         })
     }
 
@@ -49,8 +56,14 @@ class SingleArticle extends Component {
         if (this.state.singleArticle.article_id !== prevState.singleArticle.article_id) {
             API.getArticle(this.props.id).then((article) => {
                 this.setState({ singleArticle: article }, () => {
-                    console.log(this.state.singleArticle);
+
                 })
+            }).catch(({ res }) => {
+                console.log(res);
+                const errorstatus = res.status;
+                const errormessage = res.data.msg;
+                const err = { errorstatus, errormessage };
+                this.setState({ err: err, singleArticle: [] });
             })
         }
     }

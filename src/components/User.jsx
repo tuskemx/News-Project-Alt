@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import * as API from '../api'
 const uuidv1 = require('uuid/v1');
+import { Error } from './Error'
 
 
 class User extends Component {
@@ -9,12 +10,17 @@ class User extends Component {
         articlesByUser: [],
         avatar_url: '',
         name: '',
-        username: ''
+        username: '',
+        err: null
     }
     render() {
         const { user } = this.props;
-        const { articlesByUser, avatar_url, name, username } = this.state;
+        const { articlesByUser, avatar_url, name, username, err } = this.state;
         console.log(user);
+
+        if (err !== null) {
+            return <Error err={err} />
+        }
 
 
 
@@ -59,7 +65,14 @@ class User extends Component {
                 username: username,
                 name: name
             })
+        }).catch(({ res }) => {
+            const errorstatus = res.status;
+            const errormessage = res.data.msg;
+            const err = { errorstatus, errormessage };
+            this.setState({ err: err });
+
         })
+
 
     }
 }
