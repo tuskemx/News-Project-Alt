@@ -93,3 +93,10 @@ export const getArticle = (id) => {
         return article;
     });
 }
+
+export const deleteComment = (commentid) => {
+    return request.delete(`/comments/${commentid}`).then((res) => {
+
+        return res
+    })
+}
