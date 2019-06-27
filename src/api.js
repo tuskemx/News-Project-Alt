@@ -18,14 +18,10 @@ console.log(username);
        console.dir(res);
         if (res.data.articles) {
             const { articles, totalcount } = res.data;
-            
-
             return {articles, totalcount}
         }
         if (res.data.article){
-
          const { article } = res.data
-
         return article;
         }
         return res;
@@ -91,3 +87,11 @@ export const deleteComment = (commentid) => {
         return res
     })
 }
+export const deleteArticle = (articleID) => {
+    return request.delete(`/articles/${articleID}`).then((res) => {
+      console.log(res);
+        return res
+    })
+}
+
+

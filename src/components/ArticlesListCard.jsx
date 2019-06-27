@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { Error } from './Error'
 import navigatePostArticle from './functions/navigatePostArticle'
+import * as API from '../api';
 
-
+ 
 
 const ArticlesListCard = (props) => {
-console.log(props.articles);
+     
+    
+    
     return (
         <div>
             <p>{props.topic}</p>
@@ -19,7 +22,10 @@ console.log(props.articles);
                     <li>{article.votes} Votes</li>
                     <li>{article.author}</li>
                     <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
+                     <button onClick={() => {props.deleteArticle(article.article_id)}}>BUTTON DELETE TEST</button>
                 </ul>
+            
+                  
             
             ))}
             
@@ -33,8 +39,11 @@ console.log(props.articles);
             }
         </div >
     );
-
-
+  deleteArticle = (articleID) => {
+      API.deleteArticle(articleID).then((res) => {
+        console.log(res);
+      })
+    }
 };
 
 export default ArticlesListCard;
