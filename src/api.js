@@ -12,14 +12,15 @@ export const getTopics = () => {
 
 }
 
-export const getArticles = (topic, sortby) => {
+export const getArticles = (topic, sortby, p) => {
 
-    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby } }).then((res) => {
+    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby, p: p } }).then((res) => {
        
         if (res.data.articles) {
-            const { articles } = res.data;
+            const { articles, totalcount } = res.data;
+            
 
-            return articles
+            return {articles, totalcount}
         }
         if (res.data.article){
 

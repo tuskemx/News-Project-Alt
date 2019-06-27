@@ -6,12 +6,12 @@ import navigatePostArticle from './functions/navigatePostArticle'
 
 
 const ArticlesListCard = (props) => {
-
+console.log(props.articles);
     return (
         <div>
             <p>{props.topic}</p>
-
-            {props.articles.map(article => (
+           {props.articles.length > 0 &&
+            props.articles.map(article => (
                 <ul key={article.article_id}>
                     <Link to={`/articles/${article.article_id}`}>
                         <li>{article.title}</li></Link>
@@ -20,8 +20,9 @@ const ArticlesListCard = (props) => {
                     <li>{article.author}</li>
                     <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
                 </ul>
-
+            
             ))}
+            
 
 
             {props.articles.length === 0 &&
