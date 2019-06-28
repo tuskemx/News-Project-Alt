@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import * as API from '../api'
 const uuidv1 = require('uuid/v1');
 import { Error } from './Error'
+import Button from 'react-bootstrap/Button';
 
 
 class User extends Component {
@@ -43,7 +44,7 @@ class User extends Component {
                                 <br></br>
                             </Link>
                             {user === article.author &&
-                                <button onClick={() => { this.deleteArticle(article.article_id) }}>DELETE ARTICLE</button>
+                                <Button onClick={() => { this.deleteArticle(article.article_id) }}>DELETE ARTICLE</Button>
                             }
                         </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as API from '../api';
 import { Error } from './Error'
+import Button from 'react-bootstrap/Button';
 
 class Voter extends Component {
     state = {
@@ -24,9 +25,9 @@ class Voter extends Component {
         return (
 
             <div>
-                <button disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment + 1}</b></button>
+                <Button disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment + 1}</b></Button>
                 <p>{votes}</p>
-                <button disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment - 1}</b></button>
+                <Button disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment - 1}</b></Button>
             </div>
         );
     }

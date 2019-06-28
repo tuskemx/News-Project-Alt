@@ -1,6 +1,5 @@
 
 import { Link } from '@reach/router';
-import { Error } from './Error'
 import navigatePostArticle from './functions/navigatePostArticle'
 import React, { Component } from 'react';
 
@@ -31,7 +30,7 @@ class ArticlesListCard extends Component {
 
         );
     }
-  
+
 };
 
 export default ArticlesListCard;

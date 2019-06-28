@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 const uuidv1 = require('uuid/v1');
 import { Error } from './Error'
+import Button from 'react-bootstrap/Button';
 // import {
 //     PopupboxManager,
 //     PopupboxContainer
@@ -71,7 +72,7 @@ class PostArticle extends Component {
                         </select>
                     </label>
                     <br />
-                    <button>Post Article</button>
+                    <Button>Post Article</Button>
                 </form>
 
             </div>
