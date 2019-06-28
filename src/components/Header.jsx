@@ -21,22 +21,28 @@ class Header extends Component {
         if (err !== null) {
             return <Error err={err} />
         }
+        const { user } = this.props
         return (
             <div>
-                <Link to="/"><b id="bold-title">NC NEWS HOME</b></Link>
+                <Link to="/"><b id="bold-title">Bel-Air News</b></Link>
                 <br></br>
                 <Link to="/user"><b>User Page </b></Link>
                 <br></br>
-                 <Link to="sign-up"><b id="bold-title">sign up</b></Link>
+                <Link to="sign-up"><b id="bold-title">sign up</b></Link>
                 <TopicsCard topics={topics} />
                 <Link to="/postarticle"><b id="bold-title">post article</b></Link>
-
+                <br></br>
+                <b>You are logged in as {user}</b>
+                <br>
+                </br>
                 <Router>
-                    <User path='/user' user={this.props.user} />
-                    <PostTopic path='posttopic' />
-                    <ArticleList path='/topics/:topics' user={this.props.user} />
+                    <User path='/user' user={user} />
                     <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
+                    <PostTopic path='posttopic' />
+                    <ArticleList path='/topics/:topics' user={user} />
+
                 </Router>
+                <br></br>
 
 
             </div>
@@ -71,13 +77,13 @@ class Header extends Component {
             .then((article) => {
                 navigate(`/articles/${article.article_id}`)
             }).catch((res) => {
-            console.dir(res, "mount err")
-            const errorstatus = res.response.data.status;
-            const errormessage = res.message;
-            const err = { errorstatus, errormessage };
-            this.setState({ err });
+                console.dir(res, "mount err")
+                const errorstatus = res.response.data.status;
+                const errormessage = res.message;
+                const err = { errorstatus, errormessage };
+                this.setState({ err });
 
-        })
+            })
 
     }
 }

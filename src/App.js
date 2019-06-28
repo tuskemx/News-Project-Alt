@@ -25,8 +25,8 @@ class App extends Component {
         <br></br>
         <Router>
           <Error default />
-          <ArticlesList path='/articles' user={user} />
-          <ArticlesList path='/' user={user} />
+          <ArticlesList path='/articles'/>
+          <ArticlesList path='/'/>
           <SignupComponent updateAppUser={this.updateAppUser} path="/sign-up" />
           <SingleArticle path='/articles/:id' user={user} />
         </Router>

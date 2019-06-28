@@ -27,7 +27,7 @@ class ArticlesList extends Component {
             <div>
                 <h1>articles</h1>
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
-                <ArticlesListCard articles={articles} topic={topics} user={this.props.user} />
+                <ArticlesListCard articles={articles} topic={topics} />
 
 
 

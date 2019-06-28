@@ -26,6 +26,7 @@ class User extends Component {
 
         return (
             <div>
+                <br></br>
 
                 <b>{name}</b>
                 <br></br>
@@ -36,10 +37,15 @@ class User extends Component {
 
                 <div>
                     {articlesByUser.map(article => (
-                        <Link key={uuidv1()} to={`/articles/${article.article_id}`}>
-                            <b>{article.title}</b>
-                            <br></br>
-                        </Link>
+                        <div>
+                            <Link key={uuidv1()} to={`/articles/${article.article_id}`}>
+                                <b>{article.title}</b>
+                                <br></br>
+                            </Link>
+                            {user === article.author &&
+                                <button onClick={() => { this.deleteArticle(article.article_id) }}>DELETE ARTICLE</button>
+                            }
+                        </div>
 
                     )
 
@@ -70,6 +76,11 @@ class User extends Component {
         })
 
 
+    }
+    deleteArticle = (articleID) => {
+        API.deleteItem(articleID, '/articles/').then((res) => {
+            console.log(res);
+        })
     }
 }
 
