@@ -36,7 +36,7 @@ class SingleArticle extends Component {
                         <br></br>
                         <br></br>
 
-                        <Comments article={singleArticle} user={this.props.user} />
+                        <Comments article={singleArticle} user={this.props.user} id={this.props.id} />
 
                     </div>
                 }
@@ -82,7 +82,7 @@ class SingleArticle extends Component {
 
         this.setState({ votes: limiter, singleArticle: articleCopy })
 
-        API.patchVotes(direction, this.props.id, "comments").catch((err) => {
+        API.patchVotes(direction, this.props.id, "articles").catch((err) => {
             console.log(err);
             articleCopy.votes = newArticleVotes - direction;
             this.setState({ votes: votes - direction, singleArticle: articleCopy })

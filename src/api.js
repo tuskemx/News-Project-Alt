@@ -12,17 +12,17 @@ export const getTopics = () => {
 
 }
 
-export const getArticles = (topic, sortby, p, username) => {
-console.log(username);
-    return request.get(`/articles`, { params: { topic: topic, sort_by: sortby, p: p, author: username  } }).then((res) => {
-       console.dir(res);
+export const getArticles = (topic, sort_by, p, author) => {
+    console.log(topic);
+    return request.get(`/articles`, { params: { topic: topic, sort_by: sort_by, p: p, author: author } }).then((res) => {
+        console.dir(res);
         if (res.data.articles) {
             const { articles, totalcount } = res.data;
-            return {articles, totalcount}
+            return { articles, totalcount }
         }
-        if (res.data.article){
-         const { article } = res.data
-        return article;
+        if (res.data.article) {
+            const { article } = res.data
+            return article;
         }
         return res;
     })
@@ -55,7 +55,7 @@ export const getComments = (id) => {
 
 export const getUser = (specificUser) => {
     return request.get(`users/${specificUser}`).then(({ data: { user } }) => {
-     console.log(user);
+        console.log(user);
         return user
     })
 
@@ -82,7 +82,7 @@ export const getArticle = (id) => {
 }
 
 export const deleteItem = (id, identifier) => {
- //   /comments/
+    //   /comments/
     return request.delete(`${identifier}${id}`).then((res) => {
 
         return res
@@ -93,10 +93,20 @@ export const postUser = newUser => {
     console.log(newUser);
     return request.post(`/users`, newUser).then((user) => {
         console.log(user);
-      return user;
+        return user;
     })
-  };
+};
 
+export const postComment = (currentAuthor, currentBody, id) => {
+    console.log(currentAuthor);
+    console.log(currentBody);
+    console.log(id);
+    return request.post(`/articles/${id}/comments`, { author: currentAuthor, body: currentBody })
+        .then((res) => {
+
+            return res
+        })
+}
 
 
 
