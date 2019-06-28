@@ -6,18 +6,23 @@ import './articles.css';
 
 const ArticlesListCard = (props) => (
     <React.Fragment>
-        <b>Topic: {props.topic}</b>
+        {props.topic &&
+            <b>Topic: {props.topic}</b>
+        }
+        <div id="banner">BANNER</div>
         {props.articles.length > 0 &&
 
+
             props.articles.map(article => (
-                <ul id="list-box" key={article.article_id}>
+                <div id="list-box" key={article.article_id}>
                     <Link to={`/articles/${article.article_id}`}>
-                        <li id="list-title">{article.title}</li></Link>
+                        <div id="votes ">{article.votes} Votes</div>
+                        <div id="title">{article.title}</div></Link>
+
+                    <div id="author">{article.author}</div>
                     <br></br>
-                    <li>{article.votes} Votes</li>
-                    <li>{article.author}</li>
-                    <li>created at: {article.created_at.split('').slice(0, 10).join('')}</li>
-                </ul>
+                    <div id="created_at">created at: {article.created_at.split('').slice(0, 10).join('')}</div>
+                </div>
             ))}
         {props.articles.length === 0 &&
             <div>

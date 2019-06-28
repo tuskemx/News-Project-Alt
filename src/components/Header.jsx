@@ -32,7 +32,7 @@ class Header extends Component {
                 <Link to="/user"><b>[User Page] </b></Link>
                 <br></br>
                 <Link to="sign-up"><b id="bold-title">[sign up]</b></Link>
-                <br></br>]
+                <br></br>
                 <Link to="/postarticle"><b id="bold-title">[post article]</b></Link>
                 <br></br>
 
