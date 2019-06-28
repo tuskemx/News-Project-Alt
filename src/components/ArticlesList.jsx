@@ -93,9 +93,15 @@ class ArticlesList extends Component {
         API.getArticles(topic, sortby, this.state.p).then((articles) => {
             console.log(articles, "sorttts");
             this.setState({ articles: articles.articles, err: null })
-        }).catch((err) => {
-            this.setState({ err: err })
+        }).catch((res) => {
+            console.dir(res);
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
+            const err = { errorstatus, errormessage };
+            this.setState({ err: err });
+
         })
+
     }
     changePage = dir => {
         this.setState(prevState => {

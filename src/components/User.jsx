@@ -80,7 +80,15 @@ class User extends Component {
     deleteArticle = (articleID) => {
         API.deleteItem(articleID, '/articles/').then((res) => {
             console.log(res);
+        }).catch((res) => {
+            console.dir(res);
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
+            const err = { errorstatus, errormessage };
+            this.setState({ err: err });
+
         })
+
     }
 }
 

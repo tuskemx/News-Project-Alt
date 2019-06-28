@@ -50,7 +50,15 @@ class Comments extends Component {
         API.getComments(this.props.article.article_id).then((comments) => {
 
             this.setState({ comments: comments })
+        }).catch((res) => {
+            console.dir(res);
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
+            const err = { errorstatus, errormessage };
+            this.setState({ err: err });
+
         })
+
     }
     deleteClicked = (commentid) => {
         API.deleteItem(commentid, '/comments/').then((res) => {
