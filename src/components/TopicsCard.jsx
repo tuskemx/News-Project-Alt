@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from '@reach/router'
-const uuidv1 = require('uuid/v1');
-import { Error } from './Error'
+import './topics.css'
 
 
-const TopicsCard = (props) => {
+const TopicsCard = (props) => (
 
-    return (
-        <ul>
-            {props.topics.map((topic) => {
-                return <Link key={uuidv1()} to={`/topics/${topic.slug}`}>
-                    <li key={uuidv1()}>
-                        {topic.slug}
-                    </li>
-                </Link>
 
-            })}
-        </ul>
-    );
-};
+    <ul>
+        {props.topics.map((topic) => {
+            return <Link id='topics-title' key={topic.slug} to={`/topics/${topic.slug}`}>
+                <b key={topic.slug}>
+                    [{topic.slug}]
+                </b>
+              
+            </Link>
+
+        })}
+    </ul>
+);
+
 
 export default TopicsCard;

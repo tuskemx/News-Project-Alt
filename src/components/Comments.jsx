@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as API from '../api';
-const uuidv1 = require('uuid/v1');
 import Voter from './Voter';
 import { Error } from './Error'
 class Comments extends Component {
@@ -21,12 +20,12 @@ class Comments extends Component {
             <div>
                 {this.state.button &&
                     <div>
-                        <h1> YOU HAVE DELETED A COMMENT </h1>
+                        <h1>YOU HAVE DELETED A COMMENT </h1>
                     </div>
                 }
                 <div>
                     {comments.map(comment => (
-                        <ul key={uuidv1()}>
+                        <ul key={comment.comment_id}>
                             <li >{comment.body}</li>
                             <li>{comment.author}</li>
                             <li>{comment.created_at.split('').slice(0, 10).join('')}</li>
@@ -40,7 +39,7 @@ class Comments extends Component {
                             </div>
                         </ul>
                     ))}
-                    <h1>END OF COMMENTS</h1>
+                    <h1>[End of Comments...]</h1>
                 </div>
             </div>
         );

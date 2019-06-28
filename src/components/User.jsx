@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import * as API from '../api'
-const uuidv1 = require('uuid/v1');
 import { Error } from './Error'
 import Button from 'react-bootstrap/Button';
 
@@ -33,13 +32,14 @@ class User extends Component {
                 <br></br>
                 <b>{username}</b>
                 <br></br>
-                <img src={{ avatar_url }} width="50" height="50" alt="avatar"></img>
+                <img src={avatar_url} width="50" height="50" alt="avatar"></img>
+                <br></br>
                 <b>Articles By user:</b>
 
                 <div>
                     {articlesByUser.map(article => (
                         <div>
-                            <Link key={uuidv1()} to={`/articles/${article.article_id}`}>
+                            <Link key={article.article_id} to={`/articles/${article.article_id}`}>
                                 <b>{article.title}</b>
                                 <br></br>
                             </Link>

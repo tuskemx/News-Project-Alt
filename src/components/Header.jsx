@@ -7,6 +7,7 @@ import User from './User';
 import PostTopic from './PostTopic';
 import * as API from '../api';
 import { Error } from './Error'
+import './Header.css';
 
 class Header extends Component {
 
@@ -23,16 +24,19 @@ class Header extends Component {
         }
         const { user } = this.props
         return (
-            <div>
-                <Link to="/"><b id="bold-title">Bel-Air News</b></Link>
+            <div><b>You are logged in as {user}</b>
+                <TopicsCard topics={topics} />
+
+                <Link to="/"><b id="bold-title">[Bel-Air News]</b></Link>
                 <br></br>
                 <Link to="/user"><b>User Page </b></Link>
                 <br></br>
                 <Link to="sign-up"><b id="bold-title">sign up</b></Link>
-                <TopicsCard topics={topics} />
+                <br></br>
+
                 <Link to="/postarticle"><b id="bold-title">post article</b></Link>
                 <br></br>
-                <b>You are logged in as {user}</b>
+
                 <br>
                 </br>
                 <Router>

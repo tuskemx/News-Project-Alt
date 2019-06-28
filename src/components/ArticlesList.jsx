@@ -15,7 +15,6 @@ class ArticlesList extends Component {
         totalcount: 0
     }
     render() {
-        console.log(this.state.p);
         const { err } = this.state;
         if (err !== null) {
             return <Error err={err} />
@@ -25,7 +24,7 @@ class ArticlesList extends Component {
         const maxPages = Math.ceil(this.state.totalcount / 10)
         return (
             <div>
-                <h1>articles</h1>
+
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
                 <ArticlesListCard articles={articles} topic={topics} />
 
