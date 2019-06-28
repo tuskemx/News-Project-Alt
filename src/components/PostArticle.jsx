@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const uuidv1 = require('uuid/v1');
 import { Error } from './Error'
 import Button from 'react-bootstrap/Button';
 // import {
@@ -72,7 +71,7 @@ class PostArticle extends Component {
                         </select>
                     </label>
                     <br />
-                    <Button>Post Article</Button>
+                    <Button type="submit" >Post Article</Button>
                 </form>
 
             </div>
