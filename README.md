@@ -42,19 +42,17 @@ Post an article.
 
 Delete their own comments.
 
-Access it at: https://github.com/tuskemx/News-Project/tree/master/ncnews
+<h3>FRONT END:</h3>
+Access it at: https://github.com/tuskemx/News-Project-Alt
 
-<<<<<<< HEAD
-https://matthew-edwards-tuskemx.netlify.com/
-=======
+https://belairnews.netlify.com/
 
-
-
+<h3>BACK END:</h3>
 Access it at:
- https://github.com/tuskemx/News-Project/tree/master/ncnews
+https://github.com/tuskemx/NC-news-review
  
- https://matthew-edwards-tuskemx.netlify.com/
->>>>>>> 066088719b647adde0838dfb54ce29cd5351e139
+https://mynewsapp-matthew.herokuapp.com/api/
+
 
 Run the project locally by forking the repository and run in node:
 
@@ -62,11 +60,4 @@ npm install npm start
 
 The backend can be forked and locally hosted on heroku:
 
-https://github.com/tuskemx/NC-news-review
 
-<<<<<<< HEAD
-https://mynewsapp-matthew.herokuapp.com/api/articles
-=======
-https://mynewsapp-matthew.herokuapp.com/api/articles
-
->>>>>>> 066088719b647adde0838dfb54ce29cd5351e139
