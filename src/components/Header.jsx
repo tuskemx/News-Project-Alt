@@ -34,7 +34,7 @@ class Header extends Component {
                 <Router>
                     <User path='/user' user={this.props.user} />
                     <PostTopic path='posttopic' />
-                    <ArticleList path='/topics/:topics' />
+                    <ArticleList path='/topics/:topics' user={this.props.user} />
                     <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
                 </Router>
 

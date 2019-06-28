@@ -32,7 +32,9 @@ class SingleArticle extends Component {
                             <Voter articleLimiterVotes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
                         </div>
                         <br></br>
-                        <Comments article={singleArticle} />
+
+                        <Comments article={singleArticle} user={this.props.user} />
+
                     </div>
                 }
             </div>

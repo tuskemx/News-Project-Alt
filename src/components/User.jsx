@@ -52,8 +52,8 @@ class User extends Component {
     }
     componentDidMount() {
         const { user } = this.props;
-        Promise.all([API.getArticles(undefined, undefined,undefined,user), API.getUser(user)]).then((res) => {
-            const articles = res[0].articles ?  res[0].articles : ''
+        Promise.all([API.getArticles(undefined, undefined, undefined, user), API.getUser(user)]).then((res) => {
+            const articles = res[0].articles ? res[0].articles : [];
             this.setState({
                 articlesByUser: articles,
                 avatar_url: res[1].avatar_url,

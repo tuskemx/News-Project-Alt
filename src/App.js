@@ -15,31 +15,31 @@ class App extends Component {
     err: null,
   }
   render() {
-    const { err } = this.state;
+    const { err, user } = this.state;
     if (err !== null) {
       return <Error err={err} />
     }
     return (
       <div className="App">
-        <Header user={this.state.user} />
+        <Header user={user} />
         <br></br>
         <Router>
           <Error default />
-          <ArticlesList path='/articles' />
-          <ArticlesList path='/' />
+          <ArticlesList path='/articles' user={user} />
+          <ArticlesList path='/' user={user} />
           <SignupComponent updateAppUser={this.updateAppUser} path="/sign-up" />
-          <SingleArticle path='/articles/:id' />
+          <SingleArticle path='/articles/:id' user={user} />
         </Router>
 
       </div>
     );
   }
   updateAppUser = (user) => {  // { user }
-  this.setState({
-    user: user.username
-  });
-  localStorage.setItem('user', JSON.stringify(user));
-  navigate(`/`);
+    this.setState({
+      user: user.username
+    });
+    localStorage.setItem('user', JSON.stringify(user));
+    navigate(`/`);
   }
 }
 

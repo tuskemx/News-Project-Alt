@@ -27,30 +27,30 @@ class ArticlesList extends Component {
             <div>
                 <h1>articles</h1>
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
-                <ArticlesListCard articles={articles} topic={topics} />
+                <ArticlesListCard articles={articles} topic={topics} user={this.props.user} />
 
 
 
-            <div>
-                          <button
-            disabled={this.state.p === 1}
-            onClick={() => this.changePage(-1)}
-            id="left"class="previous">Previous &laquo;>
+                <div>
+                    <button
+                        disabled={this.state.p === 1}
+                        onClick={() => this.changePage(-1)}
+                        id="left" class="previous">Previous &laquo;>
           </button>
-          <button
-            disabled={this.state.p === maxPages}
-            onClick={() => this.changePage(1)}
-            id="right" class="next">Next &raquo;>
+                    <button
+                        disabled={this.state.p === maxPages}
+                        onClick={() => this.changePage(1)}
+                        id="right" class="next">Next &raquo;>
             </button>
-        
-            </div >
-                
+
+                </div >
+
 
 
 
             </div>
-           
-            
+
+
 
         );
     }
@@ -74,7 +74,7 @@ class ArticlesList extends Component {
 
         if (this.props.topics !== prevProps.topics || this.state.p !== prevState.p) {
             API.getArticles(this.props.topics, undefined, this.state.p).then((res) => {
-console.log(res);
+                console.log(res);
                 this.setState({ articles: res.articles, err: null, totalcount: res.totalcount })
 
             }).catch((res) => {
@@ -82,7 +82,7 @@ console.log(res);
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };
-                this.setState({ err: err});
+                this.setState({ err: err });
 
             })
         }
@@ -97,10 +97,10 @@ console.log(res);
             this.setState({ err: err })
         })
     }
-       changePage = dir => {
-        this.setState(prevState => { 
-            return { p: this.state.p + dir}
-      })
-       }
+    changePage = dir => {
+        this.setState(prevState => {
+            return { p: this.state.p + dir }
+        })
+    }
 }
 export default ArticlesList;
