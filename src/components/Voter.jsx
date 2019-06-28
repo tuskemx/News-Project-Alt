@@ -25,9 +25,10 @@ class Voter extends Component {
         return (
 
             <div>
-                <Button disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment + 1}</b></Button>
+                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>Votes: {voteArticleComment + 1}</b></Button>
                 <p>{votes}</p>
-                <Button disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment - 1}</b></Button>
+                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>Votes: {voteArticleComment - 1}</b></Button>
+                <br></br>
             </div>
         );
     }

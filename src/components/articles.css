@@ -69,3 +69,9 @@ justify-content: center;
         flex-direction: row;
         justify-content: right;
      }
+
+     #single-article-box{
+         border: groove;
+         border-radius: 2px;
+         border-block-color: black;
+     }

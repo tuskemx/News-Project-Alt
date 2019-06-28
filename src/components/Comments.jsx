@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from '../api';
 import Voter from './Voter';
 import { Error } from './Error'
+import './comments.css';
 class Comments extends Component {
     state = {
         comments: [],
@@ -25,7 +26,7 @@ class Comments extends Component {
                 }
                 <div>
                     {comments.map(comment => (
-                        <ul key={comment.comment_id}>
+                        <ul id="comment-card" key={comment.comment_id}>
                             <li >{comment.body}</li>
                             <li>{comment.author}</li>
                             <li>{comment.created_at.split('').slice(0, 10).join('')}</li>

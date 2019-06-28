@@ -3,6 +3,7 @@ import * as API from '../api';
 import Voter from './Voter';
 import Comments from './Comments';
 import { Error } from './Error'
+import './articles.css'
 
 class SingleArticle extends Component {
     state = {
@@ -20,17 +21,19 @@ class SingleArticle extends Component {
 
             <div>
                 {singleArticle.title &&
-                    <div id="single-article-box">
-                        <h1>{singleArticle.title}</h1>
-                        <br></br>
-                        <h2>{singleArticle.topic}</h2>
-                        <br></br>
-                        <h3>{singleArticle.body}</h3>
-                        <br></br>
-                        <h4>{singleArticle.votes}</h4>
-                        <div>
+                    <div >
+                        <div id="single-article-box">
+                            <h1>{singleArticle.title}</h1>
+                            <br></br>
+                            <h2>{singleArticle.topic}</h2>
+                            <br></br>
+                            <h3>{singleArticle.body}</h3>
+                            <br></br>
+                            <h4>Votes: {singleArticle.votes}</h4>
                             <Voter articleLimiterVotes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />
+                            <br></br>
                         </div>
+                        <br></br>
                         <br></br>
 
                         <Comments article={singleArticle} user={this.props.user} />
