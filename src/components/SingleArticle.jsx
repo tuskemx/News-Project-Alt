@@ -49,11 +49,13 @@ class SingleArticle extends Component {
             this.setState({ singleArticle: article }, () => {
                 console.log(this.state.singleArticle)
             })
-        }).catch(({ res }) => {
-            const errorstatus = res.status;
-            const errormessage = res.data.message;
+        }).catch((res) => {
+            console.dir(res);
+            const errorstatus = res.response.data.status;
+            const errormessage = res.message;
             const err = { errorstatus, errormessage };
-            this.setState({ err });
+            this.setState({ err: err });
+
         })
     }
 
@@ -73,14 +75,16 @@ class SingleArticle extends Component {
             })
         }
     }
-    HandleArticleVote = (direction) => {
+    HandleArticleVote = (direction, x) => {
         const { votes, singleArticle } = this.state
         const limiter = votes + direction;
         const newArticleVotes = singleArticle.votes + direction;
         const articleCopy = singleArticle;
         articleCopy.votes = newArticleVotes;
 
-        this.setState({ votes: limiter, singleArticle: articleCopy })
+        this.setState(prevState => {
+            return { votes: direction + prevState.votes, singleArticle: articleCopy }
+        })
 
         API.patchVotes(direction, this.props.id, "articles").catch((err) => {
             console.log(err);

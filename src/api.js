@@ -83,6 +83,9 @@ export const getArticle = (id) => {
 
 export const deleteItem = (id, identifier) => {
     //   /comments/
+
+    console.log(id);
+    console.log(identifier)
     return request.delete(`${identifier}${id}`).then((res) => {
 
         return res

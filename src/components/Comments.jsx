@@ -75,7 +75,6 @@ class Comments extends Component {
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
             this.setState({ err: err });
-
         })
         const filteredComments = this.state.comments.filter(comment => comment.comment_id !== commentid)
         this.setState({ comments: filteredComments, err: null })

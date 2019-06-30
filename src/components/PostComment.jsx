@@ -40,12 +40,20 @@ class PostCommentComponent extends Component {
             author: this.props.user
         });
         setTimeout(() => {
-            console.log(this.state.value);
+            console.log(this.state.author);
         }, 4 * 100);
     };
     submitComment = (event) => {
         const currentAuthor = this.props.user
         const currentBody = this.state.body;
+
+        console.log(currentAuthor);
+        console.log(this.props.user);
+        console.log(this.state.body);
+
+        console.log(currentAuthor);
+        console.log(this.props.user);
+        console.log(this.state.body);
 
         event.preventDefault();
 
