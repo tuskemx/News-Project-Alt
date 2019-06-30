@@ -14,6 +14,7 @@ class Voter extends Component {
         const { votes, voteChange } = this.state;
         const voteArticleComment = commentVotes ? votes : articleVotes;
         const Handle = commentVotes ? this.HandleVote : HandleArticleVote;
+        console.log(Handle);
         console.log(voteArticleComment, "votearticleocmment");
         const { err } = this.state;
         if (err !== null) {
