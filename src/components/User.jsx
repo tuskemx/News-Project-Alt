@@ -78,11 +78,43 @@ class User extends Component {
 
 
     }
+    componentDidUpdate(prevProps, prevState) {
+        const { user } = this.props;
+        if (this.state.articlesByUser.length !== prevState.articlesByUser.length) {
+            Promise.all([API.getArticles(undefined, undefined, undefined, user), API.getUser(user)]).then((res) => {
+                const articles = res[0].articles ? res[0].articles : [];
+                this.setState({
+                    articlesByUser: articles,
+                    avatar_url: res[1].avatar_url,
+                    username: res[1].username,
+                    name: res[1].name
+                })
+            }).catch((res) => {
+                console.dir(res);
+                const errorstatus = res.response.data.status;
+                const errormessage = res.message;
+                const err = { errorstatus, errormessage };
+                this.setState({ err: err });
+
+            })
+        }
+
+
+    }
     deleteArticle = (articleID) => {
         console.log(articleID, "ARTICLEID")
         API.deleteItem(articleID, '/articles/').then((res) => {
             console.log(articleID)
             console.log(res);
+            Promise.all([API.getArticles(undefined, undefined, undefined, this.props.user), API.getUser(this.props.user)]).then((res) => {
+                const articles = res[0].articles ? res[0].articles : [];
+                this.setState({
+                    articlesByUser: articles,
+                    avatar_url: res[1].avatar_url,
+                    username: res[1].username,
+                    name: res[1].name
+                })
+            })
         }).catch((res) => {
             console.dir(res);
             const errorstatus = res.response.data.status;
