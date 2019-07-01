@@ -79,7 +79,9 @@ class User extends Component {
 
     }
     deleteArticle = (articleID) => {
+        console.log(articleID, "ARTICLEID")
         API.deleteItem(articleID, '/articles/').then((res) => {
+            console.log(articleID)
             console.log(res);
         }).catch((res) => {
             console.dir(res);

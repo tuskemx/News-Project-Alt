@@ -82,12 +82,11 @@ export const getArticle = (id) => {
 }
 
 export const deleteItem = (id, identifier) => {
-    //   /comments/
-
-    console.log(id);
-    console.log(identifier)
+    console.log(id, "ID API");
+    console.log(identifier, "IDENTIFIER")
     return request.delete(`${identifier}${id}`).then((res) => {
-
+        console.log(res);
+        console.dir(res);
         return res
     })
 }
