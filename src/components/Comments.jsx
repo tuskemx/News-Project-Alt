@@ -30,8 +30,9 @@ class Comments extends Component {
                     </div>
                 }
                 <div>
-                    {comments.map(comment => (
-                        <ul id="comment-card" key={comment.comment_id}>
+                    {comments.map((comment) => {
+                        { console.log(comment, "$c", "hello", "color=yellow") }
+                        return (<ul id="comment-card" key={comment.comment_id} >
                             <li >{comment.body}</li>
                             <li>{comment.author}</li>
                             <li>{comment.created_at.split('').slice(0, 10).join('')}</li>
@@ -44,7 +45,8 @@ class Comments extends Component {
 
                             </div>
                         </ul>
-                    ))}
+                        )
+                    })}
                     <h1>[End of Comments...]</h1>
                 </div>
             </div>
@@ -82,12 +84,14 @@ class Comments extends Component {
     }
     AddCommentState = (comment) => {
         console.log(this.state.comments)
-        const newCommentsArray = [...this.state.comments, comment];
 
-        this.setState({
-            comments: newCommentsArray
+
+        this.setState(prevState => ({
+
+            comments: [...prevState.comments, comment]
 
         })
+        )
     }
 
 }

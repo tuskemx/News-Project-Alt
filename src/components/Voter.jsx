@@ -12,8 +12,9 @@ class Voter extends Component {
     render() {
         const { articleVotes, commentID, commentVotes, HandleArticleVote, articleLimiterVotes } = this.props
         const { votes, voteChange } = this.state;
-        const voteArticleComment = commentVotes ? votes : articleVotes;
-        const Handle = commentVotes ? this.HandleVote : HandleArticleVote;
+        const voteArticleComment = commentVotes || commentVotes === 0 ? votes : articleVotes;
+        const Handle = commentVotes || commentVotes === 0 ? this.HandleVote : HandleArticleVote;
+        console.log(commentVotes);
         console.log(voteArticleComment, "votearticleocmment");
         const { err } = this.state;
         if (err !== null) {
@@ -25,9 +26,9 @@ class Voter extends Component {
         return (
 
             <div>
-                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>up</b></Button>
+                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment}up</b></Button>
                 <p>{votes}</p>
-                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>down</b></Button>
+                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment}down</b></Button>
                 <br></br>
             </div >
         );
