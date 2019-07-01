@@ -12,9 +12,15 @@ class Voter extends Component {
     render() {
         const { articleVotes, commentID, commentVotes, HandleArticleVote, articleLimiterVotes } = this.props
         const { votes, voteChange } = this.state;
+<<<<<<< HEAD
         const voteArticleComment = commentVotes || commentVotes === 0 ? votes : articleVotes;
         const Handle = commentVotes || commentVotes === 0 ? this.HandleVote : HandleArticleVote;
         console.log(commentVotes);
+=======
+        const voteArticleComment = commentVotes ? votes : articleVotes;
+        const Handle = commentVotes ? this.HandleVote : HandleArticleVote;
+        console.log(Handle);
+>>>>>>> 537884ee26593c5fe190b046a670fda2db9d3e6b
         console.log(voteArticleComment, "votearticleocmment");
         const { err } = this.state;
         if (err !== null) {

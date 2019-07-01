@@ -75,9 +75,8 @@ class SingleArticle extends Component {
             })
         }
     }
-    HandleArticleVote = (direction, x) => {
+    HandleArticleVote = (direction) => {
         const { votes, singleArticle } = this.state
-        const limiter = votes + direction;
         const newArticleVotes = singleArticle.votes + direction;
         const articleCopy = singleArticle;
         articleCopy.votes = newArticleVotes;
