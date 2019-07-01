@@ -7,6 +7,7 @@ import SingleArticle from './components/SingleArticle'
 import { Error } from './components/Error';
 import SignupComponent from "./components/SignupComponent";
 import './App.css'
+import LoginPage from './components/LoginPage';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header user={user} />
+        <LoginPage user={user} changeLogin={this.changeLogin} />
         <br></br>
         <Router>
           <ArticlesList path='/articles' />
@@ -40,6 +42,30 @@ class App extends Component {
     });
     localStorage.setItem('user', JSON.stringify(user));
     navigate(`/`);
+  }
+  changeLogin = (event) => {
+
+    if (!event) //is null set in LoginPage if current login state !== current user value 
+    {
+      return this.setState({ user: null })
+    } else {
+      API.getUser(event).then((res) => {
+        if (res) {
+          this.setState({
+            user: res.username,
+          })
+          console.log(res);
+
+        }
+
+      }).catch((res) => {
+        console.dir(res);
+        const errorstatus = res.response.data.status;
+        const errormessage = res.message;
+        const err = { errorstatus, errormessage };
+        this.setState({ err: err });
+      })
+    }
   }
 }
 
