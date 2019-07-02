@@ -56,10 +56,10 @@ class ArticlesList extends Component {
     componentDidMount() {
 
         API.getArticles(this.props.topics, undefined, this.state.p).then((res) => {
-            console.log(res);
+
             this.setState({ articles: res.articles, err: null, totalcount: res.totalcount })
         }).catch((res) => {
-            console.dir(res, "mount err")
+
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };

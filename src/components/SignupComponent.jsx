@@ -59,10 +59,10 @@ export default class SignupComponent extends Component {
       </div>
     );
   }
-    updateInput = event => {
+  updateInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-handleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
     const { username, avatar_url, name } = this.state;
     const newUser = { username, name, avatar_url };
@@ -73,12 +73,11 @@ handleSubmit = event => {
         }
       })
       .catch((res) => {
-            console.dir(res, "mount err")
-            const errorstatus = res.response.data.status;
-            const errormessage = res.message;
-            const err = { errorstatus, errormessage };
-            this.setState({ err });
+        const errorstatus = res.response.data.status;
+        const errormessage = res.message;
+        const err = { errorstatus, errormessage };
+        this.setState({ err });
 
-        })
-}
+      })
+  }
 }

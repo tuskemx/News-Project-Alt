@@ -11,14 +11,13 @@ class Comments extends Component {
         button: false
     }
     render() {
-        console.log(this.props);
+
         const { comments } = this.state
         const { err } = this.state;
         if (err !== null) {
             return <Error err={err} />
         }
-        console.log(comments);
-        console.log(this.props.user, "this.props.user")
+
         return (
             <div>
                 <PostCommentComponent id={this.props.id}
@@ -58,7 +57,7 @@ class Comments extends Component {
 
             this.setState({ comments: comments })
         }).catch((res) => {
-            console.dir(res);
+
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -69,10 +68,10 @@ class Comments extends Component {
     }
     deleteClicked = (commentid) => {
         API.deleteItem(commentid, '/comments/').then((res) => {
-            console.log(res);
+
             this.setState({ button: true, err: null })
         }).catch((res) => {
-            console.dir(res);
+
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -83,7 +82,6 @@ class Comments extends Component {
 
     }
     AddCommentState = (comment) => {
-        console.log(this.state.comments)
 
 
         this.setState(prevState => ({

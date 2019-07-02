@@ -11,12 +11,12 @@ class User extends Component {
         avatar_url: '',
         name: '',
         username: '',
-        err: null
+        err: null,
     }
     render() {
         const { user } = this.props;
         const { articlesByUser, avatar_url, name, username, err } = this.state;
-        console.log(user);
+        console.log(this.props, "chick");
 
         if (err !== null) {
             return <Error err={err} />
@@ -68,7 +68,7 @@ class User extends Component {
                 name: res[1].name
             })
         }).catch((res) => {
-            console.dir(res);
+
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -90,7 +90,7 @@ class User extends Component {
                     name: res[1].name
                 })
             }).catch((res) => {
-                console.dir(res);
+
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };
@@ -102,10 +102,7 @@ class User extends Component {
 
     }
     deleteArticle = (articleID) => {
-        console.log(articleID, "ARTICLEID")
         API.deleteItem(articleID, '/articles/').then((res) => {
-            console.log(articleID)
-            console.log(res);
             Promise.all([API.getArticles(undefined, undefined, undefined, this.props.user), API.getUser(this.props.user)]).then((res) => {
                 const articles = res[0].articles ? res[0].articles : [];
                 this.setState({
@@ -116,7 +113,6 @@ class User extends Component {
                 })
             })
         }).catch((res) => {
-            console.dir(res);
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };

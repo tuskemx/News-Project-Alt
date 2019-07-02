@@ -32,13 +32,13 @@ justify-content: center;
     #list-box {
         font-family: "Times New Roman", Times, serif;
         border: 1px solid #1C6EA4;
-        background-color: #EEEEEE;
+        /* background-color: #EEEEEE;
         width: 90%;
         text-align: left;
         border-collapse: collapse;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: center; */
       }
       #list-box thead, #banner {
         background: #1C6EA4;

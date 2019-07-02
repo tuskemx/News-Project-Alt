@@ -44,7 +44,7 @@ class SingleArticle extends Component {
         );
     }
     componentDidMount() {
-        console.log(this.props.id);
+        const x = localStorage.getItem('user');
         API.getArticle(this.props.id).then((article) => {
             this.setState({ singleArticle: article }, () => {
                 console.log(this.state.singleArticle)

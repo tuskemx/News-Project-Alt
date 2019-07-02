@@ -23,4 +23,12 @@
   to { transform: rotate(360deg); }
 }
 
-
+@media screen and (max-width: 680px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    font-size: 1.5em;
+  }
+ }

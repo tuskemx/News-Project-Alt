@@ -47,13 +47,7 @@ class PostCommentComponent extends Component {
         const currentAuthor = this.props.user
         const currentBody = this.state.body;
 
-        console.log(currentAuthor);
-        console.log(this.props.user);
-        console.log(this.state.body);
 
-        console.log(currentAuthor);
-        console.log(this.props.user);
-        console.log(this.state.body);
 
         event.preventDefault();
 

@@ -1,63 +1,37 @@
-<h2>NC News<h2>
+<h2>Northcoders News (Frontend)</h2>
 
-NC news is a a news feed aggregate, where you can rate content, and discuss articles.
+This is the frontend of a full stack article message board written in React.
 
-NC News articles can be sorted into topics. Each article has user ratings can be up or down voted using the API. Users can also add comments about an article. Comments can be up or down voted. A user can add comments and remove any comments which are added to their articles (when logged in);
+The deployed version of the site can be found here: https://belairnews.netlify.com/
+The deployed API for the backend can be found here: https://mynewsapp-matthew.herokuapp.com/api
+The github repository for the backend API can be found here: https://github.com/tuskemx/NC-news-review
 
-<h3>Users can:</h3>
+<h3>Using the website</h3>
+Users can view all articles and any comments associated with them by clicking on the title of the article.
+Articles can be voted up or down and can be sorted by popularity by votes, age or author.
+Users can log in to the site and, when this is done, they are able to add articles to the site, as well as add comments and delete their own comments under articles.
+<h3>Getting Started</h3>
+To get use the website, you can either go to the deployed version at https://belairnews.netlify.com/ or clone down this repository, run npm install to install any dependencies.
 
-View a list of all articles.
+Then, in the project directory, you can run:
 
-View a list of all articles on a specific topic.
+npm start
+This runs the app in the development mode.
+You can open http://localhost:3000 to view it in the browser.
 
-View a list of all articles created by each user.
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-View an individual article.
+<h3>Deployment</h3>
+This website was deployed using http://www.netlify.com.
 
-View an individual article's comments.
+<h3>Built With</h3>
+This project was bootstrapped with Create React App.
 
-Sort articles by:
-
-date created
-
-comment_count
-
-votes
-
-<h3>Login to the site</h3>
-
-Logged in users can:
-
-Logout of the site
-
-Post a new comment to an existing article.
-
-Vote on an article.
-
-Vote on a comment.
-
-Post a topic.
-
-Post an article.
-
-Delete their own comments.
-
-<h3>FRONT END:</h3>
-Access it at: https://github.com/tuskemx/News-Project-Alt
-
-https://belairnews.netlify.com/
-
-<h3>BACK END:</h3>
-Access it at:
-https://github.com/tuskemx/NC-news-review
- 
-https://mynewsapp-matthew.herokuapp.com/api/
+<h3>Authors</h3>
+Matthew Edwards - https://tuskemx.github.io/portfolio/
 
 
-Run the project locally by forking the repository and run in node:
-
-npm install npm start
-
-The backend can be forked and locally hosted on heroku:
-
+<h3>Acknowledgments</h3>
+Northcoders http://www.northcoders.com
 

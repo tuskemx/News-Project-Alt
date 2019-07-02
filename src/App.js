@@ -40,6 +40,8 @@ class App extends Component {
     this.setState({
       user: user.username
     });
+
+
     localStorage.setItem('user', JSON.stringify(user));
     navigate(`/`);
   }
@@ -54,12 +56,12 @@ class App extends Component {
           this.setState({
             user: res.username,
           })
-          console.log(res);
+
 
         }
 
       }).catch((res) => {
-        console.dir(res);
+
         const errorstatus = res.response.data.status;
         const errormessage = res.message;
         const err = { errorstatus, errormessage };

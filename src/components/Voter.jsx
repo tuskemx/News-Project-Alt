@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from '../api';
 import { Error } from './Error'
 import Button from 'react-bootstrap/Button';
+import './voter.css';
 
 class Voter extends Component {
     state = {
@@ -14,8 +15,6 @@ class Voter extends Component {
         const { votes, voteChange } = this.state;
         const voteArticleComment = commentVotes !== undefined ? votes : articleVotes;
         const Handle = commentVotes !== undefined ? this.HandleVote : HandleArticleVote;
-        console.log(commentVotes);
-        console.log(voteArticleComment, "votearticleocmment");
         const { err } = this.state;
         if (err !== null) {
             return <Error err={err} />
@@ -26,9 +25,12 @@ class Voter extends Component {
         return (
 
             <div>
-                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}>UP<br></br><b>{voteArticleComment}up</b></Button>
+                <p><i class="arrow up"></i></p>
+                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}><br></br></Button>
+
                 <p>{votes}</p>
-                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}>DOWN<br></br><b>{voteArticleComment}down</b></Button>
+                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}><br></br></Button>
+                <p><i class="arrow down"></i></p>
                 <br></br>
             </div >
         );
