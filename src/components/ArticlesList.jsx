@@ -22,6 +22,8 @@ class ArticlesList extends Component {
         const { articles } = this.state
         const { topics } = this.props;
         const maxPages = Math.ceil(this.state.totalcount / 10)
+        const pageNav = Array.from({ length: maxPages }, (v, i) => i + 1);
+        console.log(pageNav);
         return (
             <div>
 
@@ -44,8 +46,15 @@ class ArticlesList extends Component {
 
                 </div >
 
+                <b>{this.state.p}</b>
 
-
+                <ul className="pageNav">
+                    {pageNav.map((page, i) => {
+                        return (
+                            <button key={i} onClick={() => this.changePageNumber(i + 1)}>{page}</button>
+                        );
+                    })}
+                </ul>
 
             </div>
 
@@ -73,11 +82,11 @@ class ArticlesList extends Component {
 
         if (this.props.topics !== prevProps.topics || this.state.p !== prevState.p) {
             API.getArticles(this.props.topics, undefined, this.state.p).then((res) => {
-                console.log(res);
+
                 this.setState({ articles: res.articles, err: null, totalcount: res.totalcount })
 
             }).catch((res) => {
-                console.dir(res);
+
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };
@@ -90,10 +99,10 @@ class ArticlesList extends Component {
 
     SortedArticles = (topic, sortby) => {
         API.getArticles(topic, sortby, this.state.p).then((articles) => {
-            console.log(articles, "sorttts");
+
             this.setState({ articles: articles.articles, err: null })
         }).catch((res) => {
-            console.dir(res);
+
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -102,10 +111,13 @@ class ArticlesList extends Component {
         })
 
     }
-    changePage = dir => {
-        this.setState(prevState => {
-            return { p: this.state.p + dir }
-        })
+    changePage = (dir) => {
+        this.setState({ p: this.state.page + dir }
+        )
+    }
+    changePageNumber = (num) => {
+        this.setState({ p: num }
+        )
     }
 }
 export default ArticlesList;
