@@ -16,7 +16,6 @@ class User extends Component {
     render() {
         const { user } = this.props;
         const { articlesByUser, avatar_url, name, username, err } = this.state;
-        console.log(this.props, "chick");
 
         if (err !== null) {
             return <Error err={err} />

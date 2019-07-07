@@ -62,13 +62,11 @@ class PostTopic extends Component {
         API.postNewTopic(newTopic)
             .then((newTopic) => {
                 const { slug } = newTopic.data.postedTopic
-                console.log(slug);
                 alert(`thanks for posting ${slug}`)
                 navigate(`/topics/${slug}`)
 
 
             }).catch((res) => {
-                console.dir(res);
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };

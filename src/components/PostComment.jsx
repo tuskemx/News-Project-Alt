@@ -53,7 +53,7 @@ class PostCommentComponent extends Component {
 
 
         API.postComment(currentAuthor, currentBody, this.props.id).then((res) => {
-            console.log(res.data, "%c, $$$$$$$$$$$");
+
 
             this.props.AddCommentState(res.data.comment);
         })

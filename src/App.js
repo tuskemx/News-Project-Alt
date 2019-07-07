@@ -22,8 +22,9 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Header user={user} />
         <LoginPage user={user} changeLogin={this.changeLogin} />
+        <Header user={user} />
+
         <br></br>
         <Router>
           <ArticlesList path='/articles' />

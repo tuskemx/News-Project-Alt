@@ -50,6 +50,7 @@ class LoginPage extends Component {
 
         if (this.state.userInput === this.props.user) {
             return this.props.changeLogin(null);
+
         } else {
 
             return this.props.changeLogin(this.state.userInput)

@@ -3,7 +3,8 @@ import * as API from '../api';
 import Voter from './Voter';
 import Comments from './Comments';
 import { Error } from './Error'
-import './articles.css'
+import './articles.css';
+
 
 class SingleArticle extends Component {
     state = {
@@ -47,10 +48,8 @@ class SingleArticle extends Component {
         const x = localStorage.getItem('user');
         API.getArticle(this.props.id).then((article) => {
             this.setState({ singleArticle: article }, () => {
-                console.log(this.state.singleArticle)
             })
         }).catch((res) => {
-            console.dir(res);
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -66,7 +65,6 @@ class SingleArticle extends Component {
 
                 })
             }).catch((res) => {
-                console.dir(res);
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };
@@ -86,7 +84,6 @@ class SingleArticle extends Component {
         })
 
         API.patchVotes(direction, this.props.id, "articles").catch((err) => {
-            console.log(err);
             articleCopy.votes = newArticleVotes - direction;
             this.setState({ votes: votes - direction, singleArticle: articleCopy })
         })

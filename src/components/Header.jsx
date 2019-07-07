@@ -43,6 +43,9 @@ class Header extends Component {
                 }
 
                 <br></br>
+                {user &&
+                    <Link to="/posttopic"><b id="post-topic">[post topic]</b></Link>
+                }
 
 
                 <br>
@@ -56,7 +59,7 @@ class Header extends Component {
                         <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
                     }
                     {user &&
-                        <PostTopic path='posttopic' />
+                        <PostTopic path='/posttopic' />
                     }
 
 
@@ -73,10 +76,8 @@ class Header extends Component {
     componentDidMount() {
         API.getTopics().then((res) => {
             console.log('%c TOPICS! ', 'background: #222; color: #bada55');
-            console.log(res);
             this.setState({ topics: res, renderPostArticle: true })
         }).catch((res) => {
-            console.dir(res, "mount err")
             const errorstatus = res.response.data.status;
             const errormessage = res.message;
             const err = { errorstatus, errormessage };
@@ -93,13 +94,11 @@ class Header extends Component {
             topic: topicInput,
             author: this.props.user
         };
-        console.log(newArticle);
-        console.log(topicInput);
+
         API.postArticle(newArticle)
             .then((article) => {
                 navigate(`/articles/${article.article_id}`)
             }).catch((res) => {
-                console.dir(res, "mount err")
                 const errorstatus = res.response.data.status;
                 const errormessage = res.message;
                 const err = { errorstatus, errormessage };
