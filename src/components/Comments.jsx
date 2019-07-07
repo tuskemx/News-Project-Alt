@@ -30,7 +30,7 @@ class Comments extends Component {
                 }
                 <div>
                     {comments.map((comment) => {
-                        { console.log(comment, "$c", "hello", "color=yellow") }
+                        
                         return (<ul id="comment-card" key={comment.comment_id} >
                             <li >{comment.body}</li>
                             <li>{comment.author}</li>
