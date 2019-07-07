@@ -24,12 +24,19 @@ class Voter extends Component {
         return (
 
             <div>
-                <p><i class="arrow up"></i></p>
-                <Button size="sm" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}><br></br></Button>
+                
+                <button type="button" disabled={voteChange === 1 || articleLimiterVotes === 1} onClick={() => { Handle(1, commentID) }}><br></br>
+                    <span class="VoteButton" role="img" aria-label="upHand">☝️</span>
+                </button>
+                
+                
 
                 <p>{votes}</p>
-                <Button size="sm" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}><br></br></Button>
-                <p><i class="arrow down"></i></p>
+                <button type="button" disabled={voteChange === -1 || articleLimiterVotes === -1} onClick={() => { Handle(-1, commentID) }}><br></br>
+                    <span class="VoteButton" role="img" aria-label="downHand">👇</span>
+                </button>
+             
+               
                 <br></br>
             </div >
         );
