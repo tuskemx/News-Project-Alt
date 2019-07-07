@@ -27,24 +27,24 @@ class Header extends Component {
             <div id="header-back"><b>You are logged in as {user}</b>
                 <TopicsCard topics={topics} />
 
-                <Link to="/"><b id="bold-title">[Bel-Air News]</b></Link>
+                <Link to="/"><b id="bold-title">[BEL-AIR NEWS]</b></Link>
                 <br></br>
 
                 {user &&
-                    <Link to="/user"><b>[User Page] </b></Link>
+                    <Link to="/user"><b>[USER PAGE] </b></Link>
                 }
                 <br></br>
                 {!user &&
-                    <Link to="sign-up"><b id="bold-title">[sign up]</b></Link>
+                    <Link to="sign-up"><b id="bold-title">[SIGN UP]</b></Link>
                 }
                 <br></br>
                 {user &&
-                    <Link to="/postarticle"><b id="bold-title">[post article]</b></Link>
+                    <Link to="/postarticle"><b id="bold-title">[POST ARTICLE]</b></Link>
                 }
 
                 <br></br>
                 {user &&
-                    <Link to="/posttopic"><b id="post-topic">[post topic]</b></Link>
+                    <Link to="/posttopic"><b id="post-topic">[POST TOPIC]</b></Link>
                 }
 
 
