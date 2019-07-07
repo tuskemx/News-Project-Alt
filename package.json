@@ -10,6 +10,7 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-scripts": "0.9.5",
+    "react-table": "^6.10.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {},
