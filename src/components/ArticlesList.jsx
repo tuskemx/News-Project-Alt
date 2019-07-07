@@ -122,22 +122,25 @@ class ArticlesList extends Component {
                         <button
                             disabled={this.state.p === 1}
                             onClick={() => this.changePage(-1)}
-                            id="left" class="previous">Previous &laquo;>
+                            >👈
           </button>
                         <button
                             disabled={this.state.p === maxPages}
                             onClick={() => this.changePage(1)}
-                            id="right" class="next">Next &raquo;>
+                           >
+                            👉
             </button>
 
                     </div >
-                    <ul className="pageNav">
+                    <br></br>
+                    <div className="pageNav">
                         {pageNav.map((page, i) => {
                             return (
                                 <button key={i} onClick={() => this.changePageNumber(i + 1)}>{page}</button>
                             );
                         })}
-                    </ul>
+                    </div>
+                    <br></br>
                 </div>
 
             </div >
