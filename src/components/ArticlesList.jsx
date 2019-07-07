@@ -5,6 +5,7 @@ import { Error } from './Error'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'; // default styling
 import './table.css'; //my styling
+import { ClipLoader } from "react-spinners";
 import { Link } from '@reach/router';
 
 class ArticlesList extends Component {
@@ -14,6 +15,7 @@ class ArticlesList extends Component {
         p: 1,
         button: false,
         totalcount: 0,
+        loading: true,
         columns: [
             {
                 Header: (
@@ -58,13 +60,12 @@ class ArticlesList extends Component {
         if (err !== null) {
             return <Error err={err} />
         }
+
         const { articles } = this.state
         const { topics } = this.props;
         const maxPages = Math.ceil(this.state.totalcount / 10)
         const pageNav = Array.from({ length: maxPages }, (v, i) => i + 1);
-        console.log(pageNav);
-
-
+  
         const formatArticleTable = (articles) => {
             let myArticles = [];
             if (articles) {
@@ -97,9 +98,24 @@ class ArticlesList extends Component {
                 return { title, topic, author, comment_count, created_at, votes };
             });
         };
+        
+        
         const formattedArticles = formatArticleTable(articles);
+        // if (this.state.loading) {
+        //     return (
+        //       <div className="sweet-loading">
+        //         <ClipLoader
+        //           sizeUnit={"px"}
+        //           size={150}
+        //           color={"#123abc"}
+        //           loading={this.state.loading}
+        //         />
+        //       </div>
+        //     );
+        //     }
         return (
             <div>
+                
 
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
                 <b>{this.state.p}</b>
@@ -153,7 +169,7 @@ class ArticlesList extends Component {
 
         API.getArticles(this.props.topics, undefined, this.state.p).then((res) => {
 
-            this.setState({ articles: res.articles, err: null, totalcount: res.totalcount })
+            this.setState({ articles: res.articles, err: null, totalcount: res.totalcount, loading: false })
         }).catch((res) => {
 
             const errorstatus = res.response.data.status;
@@ -170,7 +186,7 @@ class ArticlesList extends Component {
         if (this.props.topics !== prevProps.topics || this.state.p !== prevState.p) {
             API.getArticles(this.props.topics, undefined, this.state.p).then((res) => {
 
-                this.setState({ articles: res.articles, err: null, totalcount: res.totalcount })
+                this.setState({ articles: res.articles, err: null, totalcount: res.totalcount, loading: false })
 
             }).catch((res) => {
 

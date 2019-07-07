@@ -24,7 +24,7 @@ class Header extends Component {
         }
         const { user } = this.props
         return (
-            <div><b>You are logged in as {user}</b>
+            <div id="header-back"><b>You are logged in as {user}</b>
                 <TopicsCard topics={topics} />
 
                 <Link to="/"><b id="bold-title">[Bel-Air News]</b></Link>

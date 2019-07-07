@@ -31,7 +31,7 @@ class LoginPage extends Component {
                 }
                 {this.props.user &&
                     <div id="Login">
-                        <button value={null} onClick={this.submitInput}> <i><b>Logout</b></i> </button>
+                        <Button value={null} onClick={this.submitInput}> <i><b>Logout</b></i> </Button>
 
                     </div>
                 }
