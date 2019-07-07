@@ -11,9 +11,8 @@ class Voter extends Component {
         err: null
     }
     render() {
-        const { articleVotes, commentID, commentVotes, HandleArticleVote, articleLimiterVotes } = this.props
+        const { commentID, commentVotes, HandleArticleVote, articleLimiterVotes } = this.props
         const { votes, voteChange } = this.state;
-        const voteArticleComment = commentVotes !== undefined ? votes : articleVotes;
         const Handle = commentVotes !== undefined ? this.HandleVote : HandleArticleVote;
         const { err } = this.state;
         if (err !== null) {
