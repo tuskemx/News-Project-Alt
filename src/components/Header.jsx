@@ -31,7 +31,7 @@ class Header extends Component {
                 <br></br>
 
                 {user &&
-                    <Link to="/user"><b>[USER PAGE] </b></Link>
+                    <Link to="/user"><b id="bold-title">[USER PAGE] </b></Link>
                 }
                 <br></br>
                 {!user &&
@@ -44,7 +44,7 @@ class Header extends Component {
 
                 <br></br>
                 {user &&
-                    <Link to="/posttopic"><b id="post-topic">[POST TOPIC]</b></Link>
+                    <Link to="/posttopic"><b id="bold-title">[POST TOPIC]</b></Link>
                 }
 
 

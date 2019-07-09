@@ -65,7 +65,7 @@ class ArticlesList extends Component {
         const { topics } = this.props;
         const maxPages = Math.ceil(this.state.totalcount / 10)
         const pageNav = Array.from({ length: maxPages }, (v, i) => i + 1);
-  
+
         const formatArticleTable = (articles) => {
             let myArticles = [];
             if (articles) {
@@ -98,24 +98,25 @@ class ArticlesList extends Component {
                 return { title, topic, author, comment_count, created_at, votes };
             });
         };
-        
-        
+
+
         const formattedArticles = formatArticleTable(articles);
+
         // if (this.state.loading) {
         //     return (
-        //       <div className="sweet-loading">
-        //         <ClipLoader
-        //           sizeUnit={"px"}
-        //           size={150}
-        //           color={"#123abc"}
-        //           loading={this.state.loading}
-        //         />
-        //       </div>
+        //         <div className="sweet-loading">
+        //             <ClipLoader
+        //                 sizeUnit={"px"}
+        //                 size={150}
+        //                 color={"#123abc"}
+        //                 loading={this.state.loading}
+        //             />
+        //         </div>
         //     );
-        //     }
+        // }
         return (
             <div>
-                
+
 
                 <SortComponent SortedArticles={this.SortedArticles} propsTopic={topics} />
                 <b>{this.state.p}</b>
@@ -138,12 +139,12 @@ class ArticlesList extends Component {
                         <button
                             disabled={this.state.p === 1}
                             onClick={() => this.changePage(-1)}
-                            >👈
+                        >👈
           </button>
                         <button
                             disabled={this.state.p === maxPages}
                             onClick={() => this.changePage(1)}
-                           >
+                        >
                             👉
             </button>
 

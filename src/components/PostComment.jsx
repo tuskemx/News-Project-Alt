@@ -25,6 +25,7 @@ class PostCommentComponent extends Component {
                                 type="text"
                                 value={this.state.body}
                                 onChange={this.handleChange}
+                                required={true}
                             />
                         </label>
                         <input type="submit" value="Submit" />
