@@ -88,8 +88,7 @@ class Comments extends Component {
 
         this.setState(prevState => ({
 
-            comments: [...prevState.comments, comment]
-
+            comments: [comment, ...prevState.comments]
         })
         )
     }
