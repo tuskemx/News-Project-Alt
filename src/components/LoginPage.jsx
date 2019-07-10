@@ -20,7 +20,7 @@ class LoginPage extends Component {
                 {!this.props.user &&
                     <form id="login-button" onSubmit={this.submitInput}>
                         <input type='text'
-                            placeholder='jessjelly'
+                            placeholder='suggested: jessjelly'
                             required={true}
                             onChange={this.updateUserInput} />
                         <button><i><b>Login</b></i></button>

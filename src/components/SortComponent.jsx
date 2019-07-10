@@ -15,7 +15,7 @@ class SortComponent extends Component {
         }
         return (
             <div>
-                <select id="select-sort" onChange={this.updateSortState}>
+                Sort by:  <select id="select-sort" onChange={this.updateSortState}>
                     <option value="created_at" >Created At</option>
                     <option value="votes" >Votes</option>
                     <option value="comment_count" >Comment Count</option>
