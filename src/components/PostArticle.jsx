@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Error } from './Error'
 import Button from 'react-bootstrap/Button';
+import './Post.css';
+
 // import {
 //     PopupboxManager,
 //     PopupboxContainer
@@ -24,6 +26,7 @@ class PostArticle extends Component {
 
 
             <div >
+                <br></br>
                 <form id="post-form"
                     onSubmit={event => {
                         event.preventDefault();
@@ -32,7 +35,7 @@ class PostArticle extends Component {
 
                 >
                     <label>
-                        <div >
+                        <div id="write-body" >
                             <input
 
                                 required={true}
@@ -58,7 +61,7 @@ class PostArticle extends Component {
                     </label>
                     <br />
                     <label>
-                        <select
+                        <select id="select-topics"
                             required={true}
                             name="topicInput"
                             onChange={this.updateInputs}>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import * as API from '../api';
 import { navigate } from '@reach/router';
 import { Error } from './Error'
+import Button from 'react-bootstrap/Button';
+import './Post.css'
 
 
 class PostTopic extends Component {
@@ -18,10 +20,11 @@ class PostTopic extends Component {
         }
         return (
             <div>
-                <form className="form-body" onSubmit={this.handleSubmit}>
+                <br></br>
+                <form id="post-topic" onSubmit={this.handleSubmit}>
                     <label>
                         <div >
-                            <input
+                            <input id="write-body"
                                 required={true}
                                 type="text"
                                 name="slug"
@@ -33,7 +36,7 @@ class PostTopic extends Component {
                     <br />
                     <label>
                         <div >
-                            <input
+                            <input id="write-body"
                                 required={true}
                                 type="text"
                                 name="description"
@@ -42,7 +45,8 @@ class PostTopic extends Component {
                             />
                         </div>
                     </label>
-                    <button>Post Topic</button>
+                    <br></br>
+                    <Button>Post Topic</Button>
                 </form>
                 {this.state.button &&
                     <h1>thanks for posting {this.state.slug}

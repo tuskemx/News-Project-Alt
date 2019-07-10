@@ -1,0 +1,25 @@
+#write-body {
+    width: 300px;
+    size: 1000px;
+    height: 80px;
+    width: 300px;
+    font-size: 30px;
+    
+}
+#form-body{
+    size:1000px;
+    height: 50px;
+    width: 220px;
+    font-size: 20px; 
+    
+    
+}
+
+#post-topic{
+    /* size: 100px;
+    height: 100px;
+    width: 300px;
+    font-size: 15px;  */
+    direction: flex;
+    justify-content: row;
+}
