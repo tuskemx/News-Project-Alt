@@ -4,6 +4,7 @@ import Voter from './Voter';
 import Comments from './Comments';
 import { Error } from './Error'
 import './articles.css';
+import { Link } from '@reach/router';
 
 
 class SingleArticle extends Component {
@@ -14,6 +15,10 @@ class SingleArticle extends Component {
     }
     render() {
         const { singleArticle, votes } = this.state;
+        const linkStyle = {
+            fontSize: 40 + 'px'
+        } // testing inline styling font-size becomes fontSize see below
+
         const { err } = this.state;
         if (err !== null) {
             return <Error err={err} />
@@ -26,9 +31,14 @@ class SingleArticle extends Component {
                         <div id="single-article-box">
                             <h1>{singleArticle.title}</h1>
                             <br></br>
-                            <h2>{singleArticle.topic}</h2>
+                            <b style={linkStyle} ><Link to={`/topics/${singleArticle.topic}`}>{singleArticle.topic}</Link></b>
                             <br></br>
+
                             <h3>{singleArticle.body}</h3>
+                            <br></br>
+                            <br></br>
+                            <b>by {singleArticle.author}</b>
+                            <br></br>
                             <br></br>
                             <h4>Votes: {singleArticle.votes}</h4>
                             <Voter articleLimiterVotes={votes} HandleArticleVote={this.HandleArticleVote} articleVotes={singleArticle.votes} />

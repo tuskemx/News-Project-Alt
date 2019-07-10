@@ -30,11 +30,13 @@ class Comments extends Component {
                 }
                 <div>
                     {comments.map((comment) => {
-                        
-                        return (<ul id="comment-card" key={comment.comment_id} >
-                            <li >{comment.body}</li>
-                            <li>{comment.author}</li>
-                            <li>{comment.created_at.split('').slice(0, 10).join('')}</li>
+
+                        return (<div id="comment-card" key={comment.comment_id} >
+                            <b >{comment.body}</b>
+                            <br></br>
+                            <b>by {comment.author}</b>
+                            <br></br>
+                            <b>{comment.created_at.split('').slice(0, 10).join('')}</b>
                             <Voter commentID={comment.comment_id} commentVotes={comment.votes} />
                             <div>
                                 {this.props.user === comment.author &&
@@ -43,7 +45,7 @@ class Comments extends Component {
 
 
                             </div>
-                        </ul>
+                        </div>
                         )
                     })}
                     <h1>[End of Comments...]</h1>
