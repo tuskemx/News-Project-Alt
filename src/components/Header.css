@@ -17,5 +17,10 @@ text-transform: uppercase;
 }
 
 #header-back{
-    background-color: rgb(247, 249, 252);
+    direction: flex;
+    justify-content: center;
+    border: pink;
+    border-block-color: pink;
+    border-radius: 5px;
+    
 }

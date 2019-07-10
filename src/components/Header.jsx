@@ -24,52 +24,54 @@ class Header extends Component {
         }
         const { user } = this.props
         return (
-            <div id="header-back"><b>You are logged in as {user}</b>
-                <TopicsCard topics={topics} />
+            <div >
+                <div >
+                    <b>You are logged in as {user}</b>
+                    <TopicsCard topics={topics} />
 
-                <Link to="/"><b id="bold-title">[BEL-AIR NEWS]</b></Link>
-                <br></br>
+                    <Link to="/"><b id="bold-title">[BEL-AIR NEWS]</b></Link>
+                    <br></br>
 
-                {user &&
-                    <Link to="/user"><b id="bold-title">[USER PAGE] </b></Link>
-                }
-                <br></br>
-                {!user &&
-                    <Link to="sign-up"><b id="bold-title">[SIGN UP]</b></Link>
-                }
-                <br></br>
-                {user &&
-                    <Link to="/postarticle"><b id="bold-title">[POST ARTICLE]</b></Link>
-                }
-
-                <br></br>
-                {user &&
-                    <Link to="/posttopic"><b id="bold-title">[POST TOPIC]</b></Link>
-                }
-
-
-                <br>
-                </br>
-
-                <Router>
                     {user &&
-                        <User path='/user' user={user} />
+                        <Link to="/user"><b id="bold-title">[USER PAGE] </b></Link>
                     }
-                    {user &&
-                        <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
+                    <br></br>
+                    {!user &&
+                        <Link to="sign-up"><b id="bold-title">[SIGN UP]</b></Link>
                     }
+                    <br></br>
                     {user &&
-                        <PostTopic path='/posttopic' />
+                        <Link to="/postarticle"><b id="bold-title">[POST ARTICLE]</b></Link>
+                    }
+
+                    <br></br>
+                    {user &&
+                        <Link to="/posttopic"><b id="bold-title">[POST TOPIC]</b></Link>
                     }
 
 
-                    <ArticleList path='/topics/:topics' user={user} />
+                    <br>
+                    </br>
+
+                    <Router >
+                        {user &&
+                            <User path='/user' user={user} />
+                        }
+                        {user &&
+                            <PostArticle topics={topics} path='/postarticle' handleSubmit={this.handleSubmit} />
+                        }
+                        {user &&
+                            <PostTopic path='/posttopic' />
+                        }
 
 
-                </Router>
-                <br></br>
+                        <ArticleList path='/topics/:topics' user={user} />
 
 
+                    </Router>
+                    <br></br>
+
+                </div>
             </div>
         );
     }
