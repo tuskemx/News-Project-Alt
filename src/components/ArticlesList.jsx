@@ -102,18 +102,18 @@ class ArticlesList extends Component {
 
         const formattedArticles = formatArticleTable(articles);
 
-        // if (this.state.loading) {
-        //     return (
-        //         <div className="sweet-loading">
-        //             <ClipLoader
-        //                 sizeUnit={"px"}
-        //                 size={150}
-        //                 color={"#123abc"}
-        //                 loading={this.state.loading}
-        //             />
-        //         </div>
-        //     );
-        // }
+        if (this.state.loading) {
+            return (
+                <div className="sweet-loading">
+                    <ClipLoader
+                        sizeUnit={"px"}
+                        size={250}
+                        color={"#123abc"}
+                        loading={this.state.loading}
+                    />
+                </div>
+            );
+        }
         return (
             <div>
 
