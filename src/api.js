@@ -46,7 +46,7 @@ export const patchVotes = (direction, id, changeURL) => {
 export const getComments = (id) => {
 
 
-    return request.get(`/articles/${id}/comments`).then((res) => {
+    return request.get(`/articles/${id}/comments?sort_by=desc`).then((res) => {
         const { comments } = res.data;
         return comments;
     });
