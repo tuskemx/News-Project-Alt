@@ -24,7 +24,7 @@ class Header extends Component {
         }
         const { user } = this.props
         return (
-            <div >
+            <div id="header-back">
                 <div >
                     <b>You are logged in as {user}</b>
                     <TopicsCard topics={topics} />
@@ -35,6 +35,7 @@ class Header extends Component {
                     {user &&
                         <Link to="/user"><b id="bold-title">[USER PAGE] </b></Link>
                     }
+
                     <br></br>
                     {!user &&
                         <Link to="sign-up"><b id="bold-title">[SIGN UP]</b></Link>
@@ -44,10 +45,12 @@ class Header extends Component {
                         <Link to="/postarticle"><b id="bold-title">[POST ARTICLE]</b></Link>
                     }
 
+
                     <br></br>
                     {user &&
                         <Link to="/posttopic"><b id="bold-title">[POST TOPIC]</b></Link>
                     }
+
 
 
                     <br>
