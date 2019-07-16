@@ -16,10 +16,8 @@ class App extends Component {
     err: null,
   }
   render() {
-    const { err, user } = this.state;
-    if (err !== null) {
-      return <Error err={err} />
-    }
+    const { user } = this.state;
+    const err = 'Error'
     return (
       <div className="App">
         <LoginPage user={user} changeLogin={this.changeLogin} />
@@ -31,7 +29,7 @@ class App extends Component {
           <ArticlesList path='/' />
           <SignupComponent updateAppUser={this.updateAppUser} path="/sign-up" />
           <SingleArticle path='/articles/:id' user={user} />
-          <Error default />
+          <Error default err={err} />
         </Router>
 
       </div>

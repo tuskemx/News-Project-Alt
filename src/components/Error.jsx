@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Error = props => {
-
+    console.log('inside the Error component..')
     const { err } = props;
     return (
 
