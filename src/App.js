@@ -16,8 +16,8 @@ class App extends Component {
     err: null,
   }
   render() {
-    const { user } = this.state;
-    const err = 'Error'
+    const { user, err } = this.state;
+   
     return (
       <div className="App">
         <LoginPage user={user} changeLogin={this.changeLogin} />
