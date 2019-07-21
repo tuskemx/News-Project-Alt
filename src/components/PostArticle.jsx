@@ -22,6 +22,7 @@ class PostArticle extends Component {
 
             <div >
                 <br></br>
+                <br></br> <br></br>
                 <form 
                     onSubmit={event => {
                         event.preventDefault();
@@ -71,11 +72,10 @@ class PostArticle extends Component {
                     <br />
                
                     <Button type="submit" >Post Article</Button>
-                    <br></br>
-                    <br></br>
-                    <br></br>
+                    <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+                   
                 </form>
-                <ArticleList/>
+                
 
             </div>
         )

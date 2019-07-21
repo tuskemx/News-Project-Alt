@@ -21,6 +21,7 @@ class PostTopic extends Component {
         }
         return (
             <div>
+                <br></br> <br></br> 
                 <br></br>
                 <form onSubmit={this.handleSubmit}>
                     <label>
@@ -53,9 +54,8 @@ class PostTopic extends Component {
                     <h1>thanks for posting {this.state.slug}
                     </h1>}
                     <br></br>
-                    <br></br>
-                    <br></br>
-                    <ArticleList/>
+                    <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+                 
             </div>
         );
     }
