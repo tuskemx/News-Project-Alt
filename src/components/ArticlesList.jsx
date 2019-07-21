@@ -8,6 +8,7 @@ import './table.css'; //my styling
 import { ClipLoader } from "react-spinners";
 import { Link } from '@reach/router';
 
+
 class ArticlesList extends Component {
     state = {
         articles: [],

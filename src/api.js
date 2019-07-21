@@ -60,6 +60,7 @@ export const getUser = (specificUser) => {
 }
 
 export const postNewTopic = newTopic => {
+    console.log(newTopic);
     return request
         .post(`/topics`, newTopic)
 

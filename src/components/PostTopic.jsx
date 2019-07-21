@@ -4,6 +4,7 @@ import { navigate } from '@reach/router';
 import { Error } from './Error'
 import Button from 'react-bootstrap/Button';
 import './Post.css'
+import ArticleList from './ArticlesList'
 
 
 class PostTopic extends Component {
@@ -21,7 +22,7 @@ class PostTopic extends Component {
         return (
             <div>
                 <br></br>
-                <form id="post-topic" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         <div >
                             <input id="write-body"
@@ -46,11 +47,15 @@ class PostTopic extends Component {
                         </div>
                     </label>
                     <br></br>
-                    <Button>Post Topic</Button>
+                    <Button type="submit" >Post Topic</Button>
                 </form>
                 {this.state.button &&
                     <h1>thanks for posting {this.state.slug}
                     </h1>}
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <ArticleList/>
             </div>
         );
     }
@@ -60,6 +65,7 @@ class PostTopic extends Component {
 
 
     handleSubmit = (event) => {
+        console.log(event);
         event.preventDefault();
         const { slug, description } = this.state;
         const newTopic = { slug, description };
